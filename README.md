@@ -12,12 +12,12 @@ Two quick start options:
 ## Treeview
 
 ```
-**vhost**
+vhost
 ├── .htpasswd
-└── **www**/
+└── www/
     ├── .htaccess
     ├── index.(html|php)
-    ├── *asset*s/
+    ├── assets/
     │   ├── css/
     │   ├── fonts/
     │   ├── images/
