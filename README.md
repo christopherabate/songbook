@@ -11,7 +11,7 @@ Two quick start options:
 
 ## Treeview
 
-```
+```ruby
 vhost
 ├── .htpasswd
 └── www/
@@ -26,3 +26,5 @@ vhost
     │   └── .htaccess
     └── temp/
 ```
+
+
