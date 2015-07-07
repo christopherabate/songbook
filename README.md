@@ -11,7 +11,7 @@ Two quick start options:
 
 ## Treeview
 
-```php
+```
 vhost
 ├── .htpasswd
 └── www/
