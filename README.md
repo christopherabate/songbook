@@ -12,16 +12,17 @@ Two quick start options:
 ## Treeview
 
 ```
-.htpasswd
-www/
-├── index.(html|php)
-├── .htaccess
-├── assets/
-│   ├── css/
-│   ├── fonts/
-│   ├── images/
-│   └── js/
-├── private/
-│   └── .htaccess
-└── temp/
+**vhost**
+├── .htpasswd
+└── **www**/
+    ├── .htaccess
+    ├── index.(html|php)
+    ├── *asset*s/
+    │   ├── css/
+    │   ├── fonts/
+    │   ├── images/
+    │   └── js/
+    ├── private/
+    │   └── .htaccess
+    └── temp/
 ```
