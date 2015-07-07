@@ -11,7 +11,7 @@ Two quick start options:
 
 ## Treeview
 
-```ruby
+```php
 vhost
 ├── .htpasswd
 └── www/
