@@ -24,6 +24,7 @@ vhost
     │   └── js/
     ├── private/
     │   └── .htaccess
+    ├── vendor/
     └── temp/
 ```
 
