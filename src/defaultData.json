@@ -1,0 +1,66 @@
+{
+  "songs": [
+    {
+      "id": "a0a43d1b-1dbd-420c-856d-f3965a277308",
+      "title": "Muddy Waters2",
+      "artist": "Hoflaw2",
+      "tempo": 120,
+      "duration": 2,
+      "score": "        Riff/Verse               Chorus\n{start_of_tab}\ne|-----------|-----------|--------------------|\nB|-----------|-----------|--------------------|\nG|-----------|---5-------|--------------------|\nD|---7---5---|---5---5---|---7---9---10--12---|\nA|---7---5---|---3---5---|---7---9---10--12---|\nE|---5---3---|-------3---|---5---7---8---10---|\n{end_of_tab}\n\n\nThey drop bombs like fallen angels\nCities on fire, ruins of civilisations\nThis is the end of the world we used to know\nThey spit on it, spit on it, spit on it, with their deadly blow\n\nWe try to keep our head above these muddy waters, muddy waters\nTry to keep our head above these muddy waters, muddy waters\n\nThousands of corpses wandering on the sea\nWar! War! War! That’s all we foresee\nGods! Guns! Gold! Sleep in your prayer\nOn your knees, face the preachers of despair\n\nCHORUS\n\nForget the others, be scared of each other\nCome on brothers, we’re just cannon fodder\nForget the others, be scared of each other\nCome on brothers, we’re just cannon fodder\n\nCHORUS\n\nOUTRO Em F A\nWe shall overcome,\nTogether we’re one\nWe won’t fall in rocket falls\n"
+    },
+    {
+      "id": "cabfe55c-25be-486c-9e12-3ae6f9f8e861",
+      "title": "October Sky",
+      "artist": "Hoflaw",
+      "tempo": 90,
+      "duration": 120,
+      "score": "INTRO\n\n{sot}\n│ █ █ │ █ █ █ │ █ █ │ █ █ █ │\n└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘\n     1 432 X   X   X\n{eot}\n\nSYNTH LEAD\n\nGUITAR LEAD\n\nDRUM & BASS LEAD\n\nVERSE 1\nDon’t you - Remember when\nWe were made - For each other\nThrowing -  Away our pain\nOver the sky -  Of October\n\nGUITAR LEAD\n\nSYNTH LEAD\n\nVERSE 2 \n{sov}Take me - To the place\nWhere everything's -  Happened\nShow me - Again this star\nBetween - Between the trees\n\n{eov}BREAK\n\nGUITAR LEAD\n\nOUTRO\n"
+    },
+    {
+      "id": "a7fa7ac3-fe8a-4c25-9fc6-f0c9251c0523",
+      "title": "You Drive Me Crazy",
+      "artist": "Hoflaw",
+      "tempo": 88,
+      "duration": 10,
+      "score": "{start_of_intro: Intro}\nA D F# F\n{end_of_intro}\n\n{start_of_verse}\n(A A A D x3 A A A C-D)\n[A]I really [A]need to help m[A]yself, kick you out of [D]my life\n[A]Would you [A]please go fuck you[A]rself, It would b[D]e so nice\n[A]You hold my [A]balls and my he[A]art in your tin[D]y hand\n[A]I lose my [A]mind every [A]time I see you a[C]round [D]\n{end_of_verse}\n\n{start_of_chorus}\n[A]If you wanna help yourself, You’re [G]driving me [F#]crazy [F]\nThen you’re gonna fuck yourself, You’re driving me crazy\n{end_of_chorus}\n\n{start_of_verse}\nYou’re just a pain in the Ass, But you suit me so well\nI’ll be back every time, and bitch you know that\nAll I need is your love, when you’re in my sack\nI need to feel the pain, while you scratch my back\n{end_of_verse}\n\n{start_of_chorus}\nIf you wanna help yourself, You’re driving me crazy\nThen you’re gonna fuck yourself, You’re driving me crazy\n{end_of_chorus}\n\n{start_of_bridge}\nC Bb D F x3\nAll the stitches and scars\nPlease get out but not too far\nI don’t want to see you again\nBut you’re my best fighting partner\n{end_of_bridge}\n\n{start_of_intro: Riff (x4)}\nA D F# F\n{end_of_intro}\n"
+    },
+    {
+      "title": "test",
+      "artist": "test",
+      "tempo": 385,
+      "score": "tet",
+      "duration": null,
+      "id": "8736bbb8-c5ad-489a-a10f-2ff6a1abfbb1"
+    },
+    {
+      "title": "dqs",
+      "artist": "dsq",
+      "tempo": null,
+      "score": "dq",
+      "duration": null,
+      "id": "f8f98f30-34b6-4f40-84a8-1fd416fcafd8"
+    }
+  ],
+  "books": [
+    {
+      "id": "d9f7c656-7290-444c-b537-66f60c97a1f1",
+      "name": "My First Book",
+      "songs": [
+        "a0a43d1b-1dbd-420c-856d-f3965a277308",
+        "cabfe55c-25be-486c-9e12-3ae6f9f8e861",
+        "f8f98f30-34b6-4f40-84a8-1fd416fcafd8",
+        "8736bbb8-c5ad-489a-a10f-2ff6a1abfbb1",
+        "a7fa7ac3-fe8a-4c25-9fc6-f0c9251c0523"
+      ]
+    },
+    {
+      "id": "d9f7e356-7290-444c-b537-66f60b97a1f2",
+      "name": "My Second Book",
+      "songs": [
+        "a7fa7ac3-fe8a-4c25-9fc6-f0c9251c0523",
+        "cabfe55c-25be-486c-9e12-3ae6f9f8e861",
+        "a7fa7ac3-fe8a-4c25-9fc6-f0c9251c0523"
+      ]
+    }
+  ]
+}
