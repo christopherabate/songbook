@@ -1,0 +1,90 @@
+.slides {
+	height: 100%;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	display: flex;
+}
+
+.slide {
+	flex-shrink: 0;
+	overflow-y: auto;
+	scroll-snap-align: start;
+	width: 100%;
+	height: 100%;
+	padding-bottom: 2rem;
+}
+
+.editor {
+    font-family: 'Inconsolata';
+	font-style: normal;
+}
+
+.score {
+    display: inline-block;
+    line-height: 1.4;
+}
+
+.score .meta {
+	font-weight: 200;
+	margin-top: .5em;
+	margin-bottom: 1em;
+}
+
+.score .section-title {
+	font-weight: 200;
+}
+
+.score .section {
+	margin-top: .5em;
+	margin-bottom: 1em;
+}
+
+.score .tab,
+.score .t {
+	font-family: 'Inconsolata';
+	font-style: normal;
+	font-weight: 900;
+    line-height: 1.2;
+}
+
+.score .verse,
+.score .v {
+}
+
+.score .chorus,
+.score .c {
+	border-left: .2em solid;
+	padding-left: .8em;
+	font-weight: 900;
+}
+
+.score .bridge,
+.score .b {
+	font-style: italic;
+}
+
+.score .chord {
+	display: inline-block;
+	position: relative;
+	top: -1.2em;
+	width: 0;
+	font-weight: 900;
+	padding-top: 1.2em;
+	white-space: nowrap;
+}
+
+.tempo {
+    animation: blink calc(60s / var(--bpm, 120)) ease-in-out infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}

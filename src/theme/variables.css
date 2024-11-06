@@ -1,2 +1,20 @@
-/* For information on how to create your own theme, please see:
-http://ionicframework.com/docs/theming/ */
+@import 'fonts';
+@import 'songbook';
+
+:root {
+	--ion-font-family: 'Nunito', sans-serif;
+
+	--ion-color-primary: #ca4646;
+	--ion-color-primary-rgb: 202,70,70;
+	--ion-color-primary-contrast: #ffffff;
+	--ion-color-primary-contrast-rgb: 255,255,255;
+	--ion-color-primary-shade: #b23e3e;
+	--ion-color-primary-tint: #cf5959;
+
+	--ion-color-secondary: #5D5555;
+	--ion-color-secondary-rgb: 93,85,85;
+	--ion-color-secondary-contrast: #ffffff;
+	--ion-color-secondary-contrast-rgb: 255,255,255;
+	--ion-color-secondary-shade: #524b4b;
+	--ion-color-secondary-tint: #6d6666;
+}

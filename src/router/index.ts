@@ -3,13 +3,14 @@ import { RouteRecordRaw } from 'vue-router';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '',
-    redirect: '/folder/Inbox'
+    path: '/songbook/:id?',
+    name: 'Songbook',
+    component: () => import ('@/views/Songbook.vue'),
   },
   {
-    path: '/folder/:id',
-    component: () => import ('../views/FolderPage.vue')
-  }
+    path: '/:pathMatch(.*)*',
+    redirect: { name: 'Songbook' },
+  },
 ]
 
 const router = createRouter({
