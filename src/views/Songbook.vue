@@ -64,7 +64,7 @@
   </ion-page>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, nextTick, inject, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { AutoScroll } from '@/scripts/AutoScroll.js';

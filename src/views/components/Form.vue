@@ -182,7 +182,7 @@
   </ion-modal>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, toRaw , inject, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { toastController } from '@ionic/vue';

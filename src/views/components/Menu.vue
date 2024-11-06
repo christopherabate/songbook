@@ -182,7 +182,7 @@
 
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, inject, computed, watch } from 'vue';
 import { toastController } from '@ionic/vue';
 import { Dialog } from '@capacitor/dialog';

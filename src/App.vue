@@ -8,7 +8,7 @@
   </ion-app>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, reactive, computed, provide, onMounted } from 'vue';
 import Menu from '@/views/components/Menu.vue';
 import Form from '@/views/components/Form.vue';
