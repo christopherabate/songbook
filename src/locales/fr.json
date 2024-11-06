@@ -14,7 +14,7 @@
   "edit": "Créer une {type} | Éditer la {type}",
   "all": "Toutes les chansons",
   "songbook": "Songbook",
-  "in": "dans",
+  "in": "Ajouter à « {item} » après création ?",
   "name": "Nom",
   "title": "Titre",
   "artist": "Artiste",

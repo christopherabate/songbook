@@ -2,9 +2,14 @@
   <ion-menu content-id="main-content" type="overlay">
     <ion-header>
       <ion-toolbar>
-        <ion-title v-if="tab === 'settings'">{{ $t('settings') }}</ion-title>
-        <ion-title v-else>{{ data.book?.name || $t('songbook') }}</ion-title>
+        <ion-title v-if="tab !== 'settings'">{{ data.book?.name || $t('songbook') }}</ion-title>
+        <ion-title v-else>{{ $t('settings') }}</ion-title>
         <ion-buttons slot="end">
+          <ion-button @click="tab = 'settings'" :color="tab === 'settings' ? 'primary' : 'secondary'">
+            <font-awesome-icon fixed-width :icon="['fas', 'sliders']" />
+          </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="start">
           <ion-button v-if="$route.params.id && tab !== 'settings'" @click="data.form = { open: true, type: 'books', item: { ...data.book } }" color="primary">
             <font-awesome-icon fixed-width :icon="['fas', 'pen']" />
           </ion-button>
@@ -24,15 +29,6 @@
     <ion-content>
 
       <ion-list v-if="tab === 'books'" ref="list">
-        <ion-item
-          color="secondary"
-          @click="data.form = { open: true, type: tab, item: {} }"
-          :button="true"
-          :detail="false"
-        >
-          <ion-text slot="start"><font-awesome-icon fixed-width :icon="['fas', 'plus']" /></ion-text>
-          <ion-label>{{ $t('new', { type: $t('books') }) }}</ion-label>
-        </ion-item>
         <ion-item
           :disabled="!$route.params.id ? true : false"
           :router-link="{ name: 'Songbook' }"
@@ -58,7 +54,7 @@
             </ion-item-option>
           </ion-item-options>
           <ion-item-options side="end">
-            <ion-item-option color="danger" @click="remove('books', book.id)">
+            <ion-item-option color="primary" @click="remove('books', book.id)">
               <font-awesome-icon fixed-width :icon="['fas', 'trash']" />
             </ion-item-option>
           </ion-item-options>
@@ -66,15 +62,6 @@
       </ion-list>
 
       <ion-list v-if="tab === 'songs'" ref="list">
-        <ion-item
-          color="secondary"
-          @click="data.form = { open: true, type: tab, item: {} }"
-          :button="true"
-          :detail="false"
-        >
-          <ion-text slot="start"><font-awesome-icon fixed-width :icon="['fas', 'plus']" /></ion-text>
-          <ion-label>{{ $t('new', { type: $t('songs') }) }} <span v-if="$route.params.id">{{ $t('in') }} {{ data.book.name }}</span></ion-label>
-        </ion-item>
         <ion-searchbar
           :placeholder="$t('filter')"
           v-model="searchTerm"
@@ -101,7 +88,7 @@
             </ion-item-option>
           </ion-item-options>
           <ion-item-options side="end">
-            <ion-item-option color="danger" @click="remove('songs', song.id)">
+            <ion-item-option color="primary" @click="remove('songs', song.id)">
               <font-awesome-icon fixed-width :icon="['fas', 'trash']" />
             </ion-item-option>
           </ion-item-options>
@@ -136,17 +123,17 @@
         <ion-card-content>
           <ion-list>
             <ion-item @click="exportSongbook" class="ion-no-padding" :button="true" :detail="false">
-              <ion-text slot="start">
+              <ion-label>{{ $t('export') }}</ion-label>
+              <ion-text slot="end">
                 <font-awesome-icon fixed-width :icon="['fas', 'file-export']" />
               </ion-text>
-              <ion-label>{{ $t('export') }}</ion-label>
             </ion-item>
             <ion-item @click="importSongbook" class="ion-no-padding" :button="true" :detail="false">
-              <ion-text slot="start">
-                <font-awesome-icon fixed-width :icon="['fas', 'file-import']" />
-              </ion-text>
               <ion-label>{{ $t('import') }}</ion-label>
               <input type="file" id="fileInput" @change="onFileChange" accept=".json" hidden />
+              <ion-text slot="end">
+                <font-awesome-icon fixed-width :icon="['fas', 'file-import']" />
+              </ion-text>
             </ion-item>
           </ion-list>
         </ion-card-content>
@@ -157,23 +144,18 @@
           <ion-card-title>{{ $t('about') }}&hellip;</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <ion-list>
-            <ion-item class="ion-no-padding">
-              <ion-label>2024</ion-label>
-            </ion-item>
-            <ion-item class="ion-no-padding">
-              <ion-label>christopherabate.com</ion-label>
-            </ion-item>
-          </ion-list>
+          <p><ion-text>2024</ion-text></p>
+          <p><ion-text>christopherabate.com</ion-text></p>
         </ion-card-content>
       </ion-card>
 
     </ion-content>
-    <ion-footer>
+    <ion-footer v-if="tab !== 'settings'">
       <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-button @click="tab = 'settings'" :color="tab === 'settings' ? 'primary' : 'secondary'">
-            <font-awesome-icon fixed-width :icon="['fas', 'sliders']" />
+        <ion-buttons slot="start">          
+          <ion-button @click="data.form = { open: true, type: tab, item: {} }" color="primary">
+            <font-awesome-icon fixed-width :icon="['fas', 'plus']" />
+            <ion-label>{{ $t('new', { type: $t(tab) }) }}</ion-label>
           </ion-button>
         </ion-buttons>
       </ion-toolbar>

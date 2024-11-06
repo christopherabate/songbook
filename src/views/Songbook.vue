@@ -19,7 +19,7 @@
     </ion-header>
 
     <ion-content :fullscreen="true">
-      <div v-if="data?.songbook?.length > 0" class="slides" :id="data.book.id || 'allSongs'" :ref="(el) => data.slider = el">
+      <div v-if="data?.songbook?.length > 0" class="slides" :id="data.book.id || 'allSongs'">
         <div v-for="(song, index) in data.songbook" :key="song.id" :id="song.id" class="slide ion-padding" @scroll="scrollProgress = $event.target.scrollTop / ($event.target.scrollHeight - $event.target.clientHeight)">
           <div v-if="song?.score" class="score" v-html="new ChordPro(song.score).toHTML()"></div>
         </div>
@@ -58,6 +58,9 @@
           <ion-button v-else disabled="true">
             <font-awesome-icon fixed-width :icon="['fas', 'clock']" />
           </ion-button>
+          <ion-button @click="togglefit" :color="autofit ? 'secondary' : 'primary'">
+            <font-awesome-icon fixed-width :icon="['fas', autofit ? 'minimize' : 'maximize']" />
+          </ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-footer>
@@ -94,6 +97,20 @@ const togglescroll = () => {
   scrolling.value = !scrolling.value;
 };
 
+// Autofit
+const slides = ref([]);
+const slideWidth = ref();
+const autofit = ref(localStorage.getItem('autofit') === 'true' || localStorage.getItem('autofit') === null);
+const togglefit = () => {
+  autofit.value = !autofit.value;
+  localStorage.setItem('autofit', autofit.value);
+  slides.value.forEach(slide => {
+    autofit.value
+      ? autoFit(slide, slideWidth.value)
+      : slide.style.fontSize = window.getComputedStyle(document.documentElement).fontSize;
+  });
+};
+
 // Data
 const load = () => {
   data.book = route.params.id
@@ -117,7 +134,7 @@ watch(
     load();
     nextTick(() => {
       // Change visible slide
-      data.slider?.querySelector(`#${CSS.escape(data.song.id)}`)?.scrollIntoView({ behavior: "instant"});
+      document.querySelector(`#${CSS.escape(data.song.id)}`)?.scrollIntoView({ behavior: "instant"});
 
       // Observe slide resize
       const resizeSlideObserver = new ResizeObserver((entries) => {
@@ -128,7 +145,11 @@ watch(
           // Setup Autoscroll
           scrolling.value && togglescroll();
           autoscroll.value = new AutoScroll(entry.target, data.song?.duration);
-          entry.target.parentElement.querySelectorAll('.score').forEach(slide => autoFit(slide, entry.contentRect.width));
+
+          // Autofit
+          slides.value = document.querySelectorAll('.score');
+          slideWidth.value = entry.contentRect.width;
+          autofit.value && slides.value.forEach(slide => autoFit(slide, slideWidth.value));
         });
       });
 
@@ -143,7 +164,7 @@ watch(
           }
         });
       }, { threshold: 0.99 });
-      data.slider?.querySelectorAll('.slide').forEach(slide => activeSlideObserver.observe(slide));
+      document.querySelectorAll('.slide').forEach(slide => activeSlideObserver.observe(slide));
     });
   },
   { deep: true, immediate: true }

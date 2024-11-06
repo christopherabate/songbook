@@ -26,7 +26,7 @@
               name="book"
               label-placement="start"
               :value="data.book.id"
-            >{{ $t('in') }} {{ data.book.name }}</ion-toggle>
+            >{{ $t('in', { item: data.book.name }) }}</ion-toggle>
           </ion-item>
           <ion-item>
             <ion-input
@@ -280,7 +280,7 @@ const save = async (event) => {
       message: error,
       duration: 1500,
       position: 'top',
-      color: 'danger',
+      color: 'primary',
       swipeGesture: 'vertical',
     }).then(toast => toast.present());
   } finally {
