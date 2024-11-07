@@ -116,7 +116,7 @@
         </ion-card-content>
       </ion-card>
       
-      <ion-card v-if="tab === 'settings'">
+      <!-- <ion-card v-if="tab === 'settings'">
         <ion-card-header>
           <ion-card-title>{{ $t('data') }}</ion-card-title>
         </ion-card-header>
@@ -137,7 +137,7 @@
             </ion-item>
           </ion-list>
         </ion-card-content>
-      </ion-card>
+      </ion-card> -->
       
       <ion-card v-if="tab === 'settings'">
         <ion-card-header>

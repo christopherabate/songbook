@@ -1,84 +1,12 @@
 {
     "songs": [
         {
-            "title": "Ashes Of Mind",
-            "artist": "Hoflaw",
-            "tempo": 76,
-            "score": "{comment: INTRO (x2)}\n\n{comment: RIFF (x2)}\n\n{comment: SOLO (x2)}\n\n{start_of_verse}\nLook, right through my mind\nDon’t be so blind, tell me what you find\nPlease, tell me a lie\nIf you wanna try, I won’t be shy\n{end_of_verse}\n\n{comment: RIFF (x2)}\n\n{start_of_verse}\nAnd if you wanna stay\nIf you wanna play, I know what to say\nAshes everywhere\nMy head outhere, my mind elsewhere\n{end_of_verse}\n\n{comment: BREAK (x2)}\n\n{comment: SOLO (x2)}\n\n{comment: RIFF (x2)}\n\t\n{start_of_verse}\nLook, right through my mind\nDon’t be so blind, tell me what you find\nAshes everywhere\nMy head outhere, my mind elsewhere\n{end_of_verse}\n\n{comment: RIFF (x2)}\n\n{comment: STOP}\n\n",
-            "duration": 560,
-            "id": "cb3ea10a-3f13-417a-b69e-ee9ea5a01533"
-        },
-        {
-            "title": "Black Seed",
-            "artist": "Hoflaw",
-            "tempo": 132,
-            "score": "{start_of_tab: Intro/Verse/Chorus}\n     C    G    D#\nG|--------12---8---|\nD|---10---12---8---|\nA|---10---10---6---|\nE|---8-------------|\n{end_of_tab}\n\n{comment: INTRO}\n\n{start_of_verse}\nBlack seed\nDon’t make me swallow black seeds\nTo turn me into black weed\nIt’s not what you want\n{end_of_verse}\n\n{start_of_chorus}\nCHORUS\n{end_of_chorus}\n\n{start_of_verse}\nSeems real\nWhen you talk about your dreams\nEven I know what it means\nIt’s not what I want\n{end_of_verse}\n\n{start_of_tab: Bridge}\n     C    Bb  G       F   E\nG|----------------|-----------|\nD|---10---8---5---|---3---2---|\nA|---10---8---5---|---3---2---|\nE|---8----6---3---|---1---0---|\n{end_of_tab}\n\n{comment: BREAK}\n\n{start_of_chorus}\nCHORUS\n{end_of_chorus}\n\n{start_of_verse}\nBlack seed\nDon’t make me swallow black seeds\nTo turn me into black weed\nIt’s not what you want\n{end_of_verse}\n\n{start_of_chorus}\nCHORUS\n{end_of_chorus}\n\n{comment: SOLO}",
-            "duration": 320,
-            "id": "154c9d0e-983d-4496-a120-f868daaeb743"
-        },
-        {
-            "title": "House Made Of Ice",
-            "artist": "Hoflaw",
-            "tempo": null,
-            "score": "{start_of_tab}\n        C+R              B\ne|---------------|---------------|\nB|---4---7---2---|---------------|\nG|---4---7---2---|-------7---4---|\nD|---4---7---2---|---5---7---4---|\nA|---------------|---5---5---2---|\nE|---------------|---3-----------|\n{end_of_tab}\n\n\n{start_of_verse}\nIn my house made of ice\nYou can drop your dreams away\nYou can’t find in what you hide\nYou’re a servant from today\n{end_of_verse}\n\n\n{start_of_chorus}\nIn my house Made of ice\nIn my house Made of ice\n{end_of_chorus}\n\n\n{start_of_verse}\nIf I try to make it burn\nI’m drowning in my own fail\nI just sink in cold water\nAnd become part of the structure\n{end_of_verse}\n\n\n{start_of_chorus}\nIn my house Made of ice\nIn my house Made of ice\n{end_of_chorus}\n\n\n{start_of_bridge}\nBRIDGE\n{end_of_bridge}\n\n\n{start_of_verse}\nAnd at the end of the day\nI leave my house and throw my key\nIf a hot wind cross my way\nI let it melt and I feel free\n{end_of_verse}\n\n\n{start_of_chorus}\nIn my house Made of ice\nIn my house [STOP] Made of ice\n{end_of_chorus}\n",
-            "duration": 210,
-            "id": "db04dbae-06eb-4982-b189-0952a448a5a9"
-        },
-        {
-            "title": "I Won’t Change For You",
-            "artist": "Hoflaw",
-            "tempo": 82,
-            "score": "{comment: Intro : Guitar}\n\n{start_of_verse: Verse 1}\n[F#]What do you want from me\n[F#]I’m not the one you want me to be\n[F#]If you can’t deal with it\n[A]Go fuck your[B]self honey !\n\nI’ve tried in vain to pretend\nTo be someone else, goddam\nI’m not a perfect man\nYou got what you deserved\n{end_of_verse}\n\n{start_of_chorus}\n[F#](Fuck you)[A] I won’t [B]change my mind for you\n(Fuck you) I won’t change my mind for you\n(Fuck you) I won’t change myself for you\n{end_of_chorus}\n\n{start_of_verse: Verse 2}\nWho do you think you are\nYou’re not the special one\nOnly a pretty face\nFilled up with selfishness\n\nI’ve never lied to you\nAnd, bitch, you always knew\nMy lack of ambition\nCouldn’t bring you satisfaction\n{end_of_verse}\n\n{start_of_chorus: (x3)}\n(Fuck you) I won’t change my mind for you\n{end_of_chorus}\n\n{start_of_verse: Verse 3}\nIf you’d paid attention\nTo the one who gives you affection\nWe could have walked along\nOr you could die alone\n\nHow could you be so cupid\nHow could you be so stupid\nI hate you all the time\nGet the fuck out of my mind\n{end_of_verse}\n\n{start_of_chorus: (x3)}\n(Fuck you) I won’t change my mind for you\n{end_of_chorus}\n\n{comment: Break: Guitar}\n\n{start_of_verse: Verse 4}\nWould I be a better man\nIf I wore Ralph Lauren’s\nIt wouldn’t make me smarter\nBut does it really matter\n\nFeels good to bitch about you\nYou’re nothing for me, screw you\nYou can crawl at my feet\nBaby for you I won’t weep\n{end_of_verse}\n\n{start_of_chorus: (x3)}\n(Fuck you) I won’t change my mind for you\n{end_of_chorus}\n\n\n\n",
-            "duration": 300,
-            "id": "2248e26f-d764-4993-afbe-4eb6cac2c986"
-        },
-        {
-            "title": "It",
-            "artist": "Hoflaw",
-            "tempo": null,
-            "score": "{comment: INTRO}\n{start_of_tab}\n│ █ █ │ █ █ █ │ █ █ │ █ █ █ │\n└─┴─┴─┴─┴─┴￭┴￭┴─┴─┴─┴─┴─┴─┴─┘\n        4  3 2  1    (4)\n{end_of_tab}\n\n{comment: RIFF (x4)}\n\n{start_of_verse}\nI hear voices in my head\nMy pain is not physical\nBut blood is real on my hands\nThought my thoughts were logical\n{end_of_verse}\n\n{comment: RIFF (x2)}\n\n{start_of_verse}\nAnd the whisper in my ear\nHelp me survive through my day\nWith the silence comes the fear\nPlease don’t hide, it’s just a play\n{end_of_verse}\n\n{comment: RIFF (x2)}\n\n{start_of_verse}\nI don’t even know what’s real\nAll the pain just goes away\nWhen they feed me with their pills\nBut my mind just ask to stay\n{end_of_verse}\n\n{start_of_chorus: (x2)}\nI did not want to hurt you\n{end_of_chorus}\n\n{start_of_bridge}\nBRIDGE\t\n{end_of_bridge}\n\n{start_of_tab}\n│ █ █ │ █ █ █ │ █ █ │ █ █ █ │\n└─┴─┴─┴─┴─┴￭┴─┴─┴─┴─┴─┴─┴─┴─┘\n        3 2/4   1\n{end_of_tab}\n\n{start_of_chorus: (x3)}\nI’m not insane !\n{end_of_chorus}\n\n{start_of_tab}\n│ █ █ │ █ █ █ │ █ █ │ █ █ █ │\n└─┴─┴─┴─┴─┴￭┴￭┴─┴─┴─┴─┴─┴─┴─┘\n           1 3  2\n{end_of_tab}\n",
-            "duration": null,
-            "id": "e18b598a-a251-4bd0-8006-2bf597184c43"
-        },
-        {
-            "title": "Here",
-            "artist": "Pavement",
-            "tempo": 100,
-            "score": "{start_of_verse: A E D}\nI was dressed for success, but success it never comes\nAnd I'm the only one who laughs at your jokes when they are so bad\nAnd your jokes are always bad\nBut they're not as bad as this\n{end_of_verse}\n\n{start_of_bridge}\nCome join us in a prayer\nWe'll be waiting, waiting where\nEverything’s ending here\n{end_of_bridge}\n\n{start_of_chorus: D E A}\nAnd all the sterile striking, it defends an empty dock you cast away\nAnd rain upon the forehead where the mist's for hire if it's just too clear\nLet's spend our last quarter stance randomly\nGo down to the outlet once again\n{end_of_chorus}\n\n{start_of_verse: A E D}\nPainted portraits of minions and slaves, crotch mavens and one-night plays\nAre they the only ones who laugh at the jokes when they are so bad?\nAnd the jokes, they're always bad\nBut they're not as bad as this\n{end_of_verse}\n\n{start_of_bridge}\nCome join us in a prayer\nWe'll be waiting, waiting where\nEverything’s ending here\n{end_of_bridge}\n\n{start_of_chorus: D E A}\nAnd all the Spanish candles unsold away have gone to this\nAnd a run-on piece of mountain trembles, shivers, runs down the freeway\nI guess she spent her last quarter randomly\nI guess a guess is the best I'll do\n{end_of_chorus}\n\n{comment: Outro D E A A / D E G E}\n\n",
-            "duration": null,
-            "id": "2c587684-04ff-48f3-ada2-984fcef5bc13"
-        },
-        {
-            "title": "October Sky",
-            "artist": "Hoflaw",
-            "tempo": 60,
-            "score": "{start_of_tab: INTRO}\n│ █ █ │ █ █ █ │ █ █ │ █ █ █ │\n└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘\nLH   1 432\nRH       X   X   X\n{end_of_tab}\n\n{comment: SYNTH LEAD}\n{comment: GUITAR LEAD}\n{comment: DRUM & BASS LEAD}\n\n{start_of_verse}\nDon’t you - Remember when\nWe were made - For each other\nThrowing -  Away our pain\nOver the sky -  Of October\n{end_of_verse}\n\n{comment: GUITAR LEAD}\n{comment: SYNTH LEAD}\n\n{start_of_verse}\nTake me - To the place\nWhere everything's -  Happened\nShow me - Again this star\nBetween - Between the trees\n{end_of_verse}\n\n{comment: BREAK}\n{comment: GUITAR LEAD}\n{comment: OUTRO}\n",
-            "duration": 244,
-            "id": "64d02e58-36aa-416e-be22-ebfb55db10d4"
-        },
-        {
-            "id": "8f3dd954-fb1e-49bd-bf57-470ab2554e48",
-            "title": "Umbra Renascentis",
-            "artist": "Hoflaw",
-            "score": "{start_of_verse: Intro / Verse}\nGuitar 1\nGuitar 2  - (E)\n{end_of_verse}\n\n{start_of_chorus: Chorus}\nGuitar 1\nGuitar 2 - Riff Treble\n{end_of_chorus}\n\n{start_of_verse: Verse}\nGuitar 1\nGuitar 2 - Arpeggio\n{end_of_verse}\n\n{start_of_chorus: Chorus}\nGuitar 1\nGuitar 2 - Riff Treble\n{end_of_chorus}\n\n{start_of_verse: Break}\nBass\n{end_of_verse}\n\n{start_of_bridge: Bridge}\nBass\nBass + Guitar 1\nBass + Guitar 1 + Guitar 2 (x2)\n{end_of_bridge}\n\n{start_of_verse: Outro}\nGuitar 1\nGuitar 2  - (E)\n{end_of_verse}\n"
-        },
-        {
-            "id": "e69e9173-41a6-4fb3-aca5-0ccfb17c9ea5",
-            "title": "You Drive Me Crazy",
-            "artist": "Hoflaw",
-            "score": "{comment: Intro}\n\n{start_of_verse}\n[A]I really need to help myself, kick you out of [D]my life\n[A]Would you please go fuck yourself, It will be [D]so nice\n[A]You hold my balls and my heart in you ti[D]ny hand\n[A]I lose my mind every time I see you around [C]     [D]\n{end_of_verse}\n\n{start_of_chorus}\n[A]If you [G]wanna help you[F#]rself, You’re [F]driving me crazy\n[A]They you’re [G]gonna fuck you[F#]rself, You’re [F]driving me crazy\n{end_of_chorus}\n\n{start_of_verse}\nYou’re just a pain in the Ass, But you suit me so well\nI’ll be back every time, and bitch you know that\nAll I need is your love, when you’re in may sack\nI need to feel the pain, while you’re scratch my back\n{end_of_verse}\n\n{start_of_chorus}\nIf you wanna help yourself, You’re driving me crazy\nThey you’re gonna fuck yourself, You’re driving me crazy\n{end_of_chorus}\n\n{start_of_bridge: C Bb D F}\n[C]All the s[Bb]titches and scars [D]     [F]\n[C]Please get ou[Bb]t but not too far [D]     [F]\n[C]I don’t wa[Bb]nt to see you again [D]     [F]\n[C]But you’re my be[Bb]st fighting partner [C]     [D]\n{end_of_bridge}\n\n{comment: Intro (x2)}\n\n{start_of_chorus}\nRiff  (x2)\n{end_of_chorus}\n"
-        },
-        {
-            "id": "9b1db629-788f-484b-b85b-9d0abc600ed7",
-            "title": "Muddy Waters",
-            "artist": "Hoflaw",
-            "score": "{start_of_tab}\n         Riff/Verse              Chorus\ne|-----------|-----------|--------------------|\nB|-----------|-----------|--------------------|\nG|-----------|---5-------|--------------------|\nD|---7---5---|---5---5---|---7---9---10--12---|\nA|---7---5---|---3---5---|---7---9---10--12---|\nE|---5---3---|-------3---|---5---7---8---10---|\n{end_of_tab}\n\n{start_of_verse}\nThey drop bombs like fallen angels\nCities on fire, ruins of civilisations\nThis is the end of the world we used to know\nThey spit on it, spit on it, spit on it, with their deadly blow\n{end_of_verse}\n\n{start_of_chorus}\nWe try to keep our head above these muddy waters, muddy waters\nTry to keep our head above these muddy waters, muddy waters\n{end_of_chorus}\n\n{start_of_verse}\nThousands of corpses wandering on the sea\nWar! War! War! That’s all we foresee\nGods! Guns! Gold! Sleep in your prayer\nOn your knees, face the preachers of despair\n{end_of_verse}\n\n{start_of_chorus}\nWe try to keep our head above these muddy waters, muddy waters\nTry to keep our head above these muddy waters, muddy waters\n{end_of_chorus}\n\n{start_of_verse}\nForget the others, be scared of each other\nCome on brothers, we’re just cannon fodder\nForget the others, be scared of each other\nCome on brothers, we’re just cannon fodder\n{end_of_verse}\n\n{start_of_chorus}\nWe try to keep our head above these muddy waters, muddy waters\nTry to keep our head above these muddy waters, muddy waters\n{end_of_chorus}\n\n{start_of_bridge: Outro: Em F A}\nWe shall overcome,\nTogether we’re one\nWe won’t fall in rocket falls\n{end_of_bridge}\n"
-        },
-        {
-            "id": "f9f8e50c-2749-454c-9f43-554ad0c3b505",
-            "title": "Jericho",
-            "artist": "Hoflaw",
-            "score": "{start_of_tab: INTRO: Guitar (x1) / Drums (x1) / Synth (x1) / Bass (x4)}\n│ █ █ │ █ █ █ │ █ █ │ █ █ █ │\n└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘\n 2  1/3 54\n{end_of_tab}\n\n{start_of_tab: ARPEGGIO (x4)}\n│ █ █ │ █ █ █ │ █ █ │ █ █ █ │\n└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘\n 2 341  5\n{end_of_tab}\n\n{start_of_tab: RIFF (x4)}\n│ █ █ │ █ █ █ │ █ █ │ █ █ █ │\n└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘\n x   x  xx     x   x  xx\n{end_of_tab}\n\n{start_of_tab: OCTAVER (x4)}\n│ █ █ │ █ █ █ │ █ █ │ █ █ █ │\t\t│ █ █ │ █ █ █ │ █ █ │ █ █ █ │\n└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘\t\t└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘\n x   x  xx        41  23     \t\t                  56  43 2 1\n{end_of_tab}\n\n{comment: ARPEGGIO (x4)}\n\n{start_of_bridge}\nBREAK\n{end_of_bridge}\n\n{comment: RIFF (x4)}\n\n{comment: OUTRO (x1)}\n"
+            "id": "af9ba7d4-adda-41a8-95ba-c2c08330be88",
+            "title": "In The Pine (My Girl)",
+            "artist": "Leadbelly",
+            "tempo": "112",
+            "duration": "260",
+            "score": "{comment: Intro: E / E7 / A / G / B7 / E (x2)}\n\n{start_of_verse: Verse 1}\nMy [E]girl, my [E7]girl, don't [A]lie to m[G]e\nTell me [B7]where did you sleep last [E]night?\nIn the [E]pines, in the [E7]pines\nWhere the [A]sun don't ever [G]shine,\nI would [B7]shiver the whole night [E]through.\n{end_of_verse}\n\n{start_of_verse: Verse 2}\nMy girl, my girl, where will you go?\nI'm goin' where the cold wind blows.\nIn the pines, in the pines\nWhere the sun don't ever shine,\nI would shiver the whole night through.\n{end_of_verse}\n\n{start_of_verse: Verse 3}\nMy girl, my girl, don't lie to me\nTell me where did you sleep last night?\nIn the pines, in the pines\nWhere the sun don't ever shine,\nI would shiver the whole night through.\n{end_of_verse}\n\n{comment: Instrumental: E / E7 / A / G / B7 / E (x2)}\n\n{start_of_verse: Verse 4}\nMy father was a hard workin' man\nKilled a mile and a half from here.\nHis head was found in a driving wheel,\nAnd his body hasn't ever been found.\n{end_of_verse}\n\n{start_of_verse: Verse 5}\nMy girl, my girl, don't lie to me\nTell me where did you sleep last night?\nIn the pines, in the pines\nWhere the sun don't ever shine,\nI would shiver the whole night through.\n{end_of_verse}\n\n"
         }
     ]
 }
