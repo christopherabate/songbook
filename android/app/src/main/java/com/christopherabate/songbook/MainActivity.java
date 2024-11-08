@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.christopherabate.songbook;
 
 import com.getcapacitor.BridgeActivity;
 
