@@ -15,13 +15,20 @@
             <font-awesome-icon fixed-width :icon="['fas', 'pen']" />
           </ion-button>
         </ion-buttons>
+        <ion-progress-bar :value="scrollProgress"></ion-progress-bar>
       </ion-toolbar>
     </ion-header>
 
     <ion-content :fullscreen="true">
       <div v-if="data?.songbook?.length > 0" class="slides" :id="data.book.id || 'allSongs'">
-        <div v-for="(song, index) in data.songbook" :key="song.id" :id="song.id" class="slide ion-padding" @scroll="scrollProgress = $event.target.scrollTop / ($event.target.scrollHeight - $event.target.clientHeight)">
-          <div v-if="song?.score" class="score" v-html="chordPro.toHTML(song.score)"></div>
+        <div v-for="(song, index) in data.songbook" :key="song.id" :id="song.id" class="slide" @scroll="scrollProgress = $event.target.scrollTop / ($event.target.scrollHeight - $event.target.clientHeight)">
+          <div v-if="song?.score" class="score ion-padding" v-html="chordPro.toHTML(song.score)"></div>
+          <ion-list class="notes ion-no-padding" lines="none" :style="notes ? 'display: unset' : 'display: none'">
+            <ion-item>
+              <ion-label class="noteslist">
+              </ion-label>
+            </ion-item>
+          </ion-list>
         </div>
       </div>
       
@@ -44,6 +51,9 @@
           </ion-button>
         </ion-buttons>
         <ion-buttons slot="end">
+          <ion-button @click="togglenotes":color="notes ? 'secondary' : 'primary'">
+            <font-awesome-icon fixed-width :icon="['fas', notes ? 'thumbtack-slash' : 'thumbtack']" />
+          </ion-button>
           <ion-button v-if="data.song.tempo" @click="tempo = !tempo" :class="{ tempo: tempo }" :style="tempo ? `--bpm: ${data.song.tempo}` : ''" :color="tempo ? 'primary' : 'secondary'">
             {{ data.song.tempo }}
             <font-awesome-icon fixed-width :icon="['fas', 'heart-pulse']" />
@@ -83,6 +93,13 @@ const data = inject('data');
 
 // Tempo
 const tempo = ref();
+
+// Notes
+const notes = ref(localStorage.getItem('notes') !== 'false');
+const togglenotes = () => {
+  notes.value = !notes.value;
+  localStorage.setItem('notes', notes.value.toString());
+};
 
 // Progress
 const scrollProgress = ref(0);
@@ -163,6 +180,20 @@ watch(
         });
       }, { threshold: 0.99 });
       document.querySelectorAll('.slide').forEach(slide => activeSlideObserver.observe(slide));
+      
+      // Observe notes
+      const activeNotesObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const note = Array.from(document.querySelector('.noteslist').children).find(child => child.isEqualNode(entry.target));
+          
+          if (entry.isIntersecting && !note) {
+            document.querySelector('.noteslist').append(entry.target.cloneNode(true));
+          } else if (!entry.isIntersecting && note) {
+            document.querySelector('.noteslist').removeChild(note);
+          }
+        });
+      }, { threshold: 1 });
+      document.querySelectorAll('.score .note').forEach(note => activeNotesObserver.observe(note));
     });
   },
   { deep: true, immediate: true }
