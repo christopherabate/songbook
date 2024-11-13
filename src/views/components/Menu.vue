@@ -6,7 +6,7 @@
         <ion-title v-else>{{ $t('settings') }}</ion-title>
         <ion-buttons slot="end">
           <ion-button @click="tab = 'settings'" :color="tab === 'settings' ? 'primary' : 'secondary'">
-            <font-awesome-icon fixed-width :icon="['fas', 'sliders']" />
+            <font-awesome-icon fixed-width :icon="['fas', 'gear']" />
           </ion-button>
         </ion-buttons>
         <ion-buttons slot="start">
@@ -116,7 +116,7 @@
         </ion-card-content>
       </ion-card>
       
-      <!-- <ion-card v-if="tab === 'settings'">
+      <ion-card v-if="tab === 'settings'">
         <ion-card-header>
           <ion-card-title>{{ $t('data') }}</ion-card-title>
         </ion-card-header>
@@ -125,19 +125,19 @@
             <ion-item @click="exportSongbook" class="ion-no-padding" :button="true" :detail="false">
               <ion-label>{{ $t('export') }}</ion-label>
               <ion-text slot="end">
-                <font-awesome-icon fixed-width :icon="['fas', 'file-export']" />
+                <font-awesome-icon fixed-width :icon="['fas', 'upload']" />
               </ion-text>
             </ion-item>
             <ion-item @click="importSongbook" class="ion-no-padding" :button="true" :detail="false">
               <ion-label>{{ $t('import') }}</ion-label>
               <input type="file" id="fileInput" @change="onFileChange" accept=".json" hidden />
               <ion-text slot="end">
-                <font-awesome-icon fixed-width :icon="['fas', 'file-import']" />
+                <font-awesome-icon fixed-width :icon="['fas', 'download']" />
               </ion-text>
             </ion-item>
           </ion-list>
         </ion-card-content>
-      </ion-card> -->
+      </ion-card>
       
       <ion-card v-if="tab === 'settings'">
         <ion-card-header>

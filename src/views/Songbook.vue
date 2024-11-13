@@ -59,7 +59,7 @@
             <font-awesome-icon fixed-width :icon="['fas', 'clock']" />
           </ion-button>
           <ion-button @click="togglefit" :color="autofit ? 'secondary' : 'primary'">
-            <font-awesome-icon fixed-width :icon="['fas', autofit ? 'minimize' : 'maximize']" />
+            <font-awesome-icon fixed-width :icon="['fas', autofit ? 'down-left-and-up-right-to-center' : 'up-right-and-down-left-from-center']" />
           </ion-button>
         </ion-buttons>
       </ion-toolbar>

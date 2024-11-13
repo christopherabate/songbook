@@ -214,7 +214,7 @@ const tapTempo = () => {
   const now = Date.now();
   taps.value = [...taps.value.filter(time => now - time < 2500), now];
 
-  if (tapTimes.value.length > 1) {
+  if (taps.value.length > 1) {
     const avgInterval = (now - taps.value[0]) / (taps.value.length - 1);
     data.form.item.tempo = Math.round(60000 / avgInterval);
   }
