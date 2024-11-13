@@ -93,7 +93,7 @@
                   <div
                     v-if="data.form.item.score"
                     class="score"
-                    v-html="new ChordPro(data.form.item.score).toHTML()"
+                    v-html="chordPro.toHTML(data.form.item.score)"
                   ></div>
                 </ion-item>
               </ion-list>
@@ -166,16 +166,16 @@
     <ion-footer>
       <ion-toolbar v-if="data.form.type === 'songs'">
         <ion-buttons class="controls" slot="start">
-          <ion-button @click="wrapSelection('[', ']')"><font-awesome-icon fixed-width :icon="['fas', 'music']" /></ion-button>
-          <ion-button @click="wrapSelection('{start_of_tab}\n', '\ne|----|\nB|----|\nG|----|\nD|----|\nA|----|\nE|----|\n{end_of_tab}')"><font-awesome-icon fixed-width :icon="['fas', 'guitar']" /></ion-button>
-          <ion-button @click="wrapSelection('{start_of_tab}\n│ █ █ │ █ █ █ │ █ █ │ █ █ █ │\n└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘\n', '\n{end_of_tab}')"><font-awesome-icon :icon="['fas', 'table-list']" rotation="90" /></ion-button>
-          <ion-button @click="wrapSelection('{start_of_verse}\n', '\n{end_of_verse}')"><font-awesome-icon fixed-width :icon="['fas', 'v']" /></ion-button>
-          <ion-button @click="wrapSelection('{start_of_chorus}\n', '\n{end_of_chorus}')"><font-awesome-icon fixed-width :icon="['fas', 'c']" /></ion-button>
-          <ion-button @click="wrapSelection('{start_of_bridge}\n', '\n{end_of_bridge}')"><font-awesome-icon fixed-width :icon="['fas', 'b']" /></ion-button>
-          <ion-button @click="wrapSelection('{comment: ', '}')"><font-awesome-icon fixed-width :icon="['fas', 'message']" /></ion-button>
+          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '[', ']')"><font-awesome-icon fixed-width :icon="['fas', 'music']" /></ion-button>
+          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_tab}\n', '\n{end_of_tab}', 'e|----|\nB|----|\nG|----|\nD|----|\nA|----|\nE|----|')"><font-awesome-icon fixed-width :icon="['fas', 'guitar']" /></ion-button>
+          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_tab}\n', '\n{end_of_tab}', '│ █ █ │ █ █ █ │ █ █ │ █ █ █ │\n└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘')"><font-awesome-icon :icon="['fas', 'table-list']" rotation="90" /></ion-button>
+          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_verse}\n', '\n{end_of_verse}', 'Verse')"><font-awesome-icon fixed-width :icon="['fas', 'v']" /></ion-button>
+          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_chorus}\n', '\n{end_of_chorus}', 'Chorus')"><font-awesome-icon fixed-width :icon="['fas', 'c']" /></ion-button>
+          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_bridge}\n', '\n{end_of_bridge}', 'Bridge')"><font-awesome-icon fixed-width :icon="['fas', 'b']" /></ion-button>
+          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{comment: ', '}', 'Comment')"><font-awesome-icon fixed-width :icon="['fas', 'message']" /></ion-button>
         </ion-buttons>
         <ion-buttons class="controls ion-hide-lg-up" slot="end">
-          <ion-button @click="toggleScore()" :color="showScore ? 'primary' : 'secondary'"><font-awesome-icon fixed-width :icon="['fas', showScore ? 'eye' : 'eye-slash']" /></ion-button>
+          <ion-button @click="showScore = !showScore" :color="showScore ? 'primary' : 'secondary'"><font-awesome-icon fixed-width :icon="['fas', showScore ? 'eye' : 'eye-slash']" /></ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-footer>
@@ -186,7 +186,7 @@
 import { ref, toRaw , inject, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { toastController } from '@ionic/vue';
-import { ChordPro } from '@/scripts/ChordPro.js';
+import * as chordPro from '@/scripts/ChordPro.js';
 import * as songbook from '@/services/Songbook';
 import { useI18n } from 'vue-i18n';
 
@@ -209,40 +209,22 @@ const filteredItems = computed(() => {
 });
 
 // Tap Tempo
-let tapTimes = ref([]);
+let taps = ref([]);
 const tapTempo = () => {
   const now = Date.now();
-  tapTimes.value = [...tapTimes.value.filter(time => now - time < 2500), now];
+  taps.value = [...taps.value.filter(time => now - time < 2500), now];
 
   if (tapTimes.value.length > 1) {
-    const avgInterval = (now - tapTimes.value[0]) / (tapTimes.value.length - 1);
+    const avgInterval = (now - taps.value[0]) / (taps.value.length - 1);
     data.form.item.tempo = Math.round(60000 / avgInterval);
   }
 };
 
 // Text Editor
 const editor = ref(null);
-const wrapSelection = (before, after) => {
-  const textarea = editor.value?.$el.querySelector('textarea');
-  const { selectionStart: start, selectionEnd: end, value } = textarea || {};
-
-  if (textarea && start !== undefined && end !== undefined) {
-    data.form.item.score = value.slice(0, start) + before + value.substring(start, end) + after + value.slice(end);
-
-    requestAnimationFrame(() => {
-      textarea.focus();
-      (start !== end)
-        ? textarea.setSelectionRange(start + before.length, start + before.length + (end - start))
-        : textarea.setSelectionRange(start + before.length, start + before.length);
-    });
-  }
-};
 
 // Toggle score
 const showScore = ref(false);
-const toggleScore = () => {
-  showScore.value = !showScore.value;
-};
 
 // Toggle song selection
 const toggleSelection = (id, { detail: { checked } }) => {

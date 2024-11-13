@@ -21,7 +21,7 @@
     <ion-content :fullscreen="true">
       <div v-if="data?.songbook?.length > 0" class="slides" :id="data.book.id || 'allSongs'">
         <div v-for="(song, index) in data.songbook" :key="song.id" :id="song.id" class="slide ion-padding" @scroll="scrollProgress = $event.target.scrollTop / ($event.target.scrollHeight - $event.target.clientHeight)">
-          <div v-if="song?.score" class="score" v-html="new ChordPro(song.score).toHTML()"></div>
+          <div v-if="song?.score" class="score" v-html="chordPro.toHTML(song.score)"></div>
         </div>
       </div>
       
@@ -71,8 +71,8 @@
 import { ref, nextTick, inject, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { AutoScroll } from '@/scripts/AutoScroll.js';
-import { ChordPro } from '@/scripts/ChordPro.js';
-import { autoFit } from '@/scripts/TextFit.js';
+import * as chordPro from '@/scripts/ChordPro.js';
+import * as textFit from '@/scripts/TextFit.js';
 
 // Routing
 const route = useRoute();
@@ -91,23 +91,21 @@ const scrollProgress = ref(0);
 const scrolling = ref(false);
 const autoscroll = ref();
 const togglescroll = () => {
-  scrolling.value
-    ? autoscroll.value.pause()
-    : autoscroll.value.play(() => (scrolling.value = false));
+  if (scrolling.value) autoscroll.value.pause();
+  else autoscroll.value.play(() => (scrolling.value = false));
   scrolling.value = !scrolling.value;
 };
 
 // Autofit
 const slides = ref([]);
 const slideWidth = ref();
-const autofit = ref(localStorage.getItem('autofit') === 'true' || localStorage.getItem('autofit') === null);
+const autofit = ref(localStorage.getItem('autofit') !== 'false');
 const togglefit = () => {
   autofit.value = !autofit.value;
-  localStorage.setItem('autofit', autofit.value);
+  localStorage.setItem('autofit', autofit.value.toString());
   slides.value.forEach(slide => {
-    autofit.value
-      ? autoFit(slide, slideWidth.value)
-      : slide.style.fontSize = window.getComputedStyle(document.documentElement).fontSize;
+    if (autofit.value) textFit.auto(slide, slideWidth.value);
+    else slide.style.fontSize = window.getComputedStyle(document.documentElement).fontSize;
   });
 };
 
@@ -149,7 +147,7 @@ watch(
           // Autofit
           slides.value = document.querySelectorAll('.score');
           slideWidth.value = entry.contentRect.width;
-          autofit.value && slides.value.forEach(slide => autoFit(slide, slideWidth.value));
+          autofit.value && slides.value.forEach(slide => textFit.auto(slide, slideWidth.value));
         });
       });
 

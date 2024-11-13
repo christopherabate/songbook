@@ -1,10 +1,5 @@
-export class ChordPro {
-  constructor(score) {
-    this.score = score;
-  }
-
-  toHTML() {
-    return this.score
+export const toHTML = (score) => {
+  return score
     .replace(/^( +)/gm, spaces => spaces.replace(/ /g, '&nbsp;'))
     .replace(/^#(.*)$/gm, '<div class="hidden">$1</div>')
     .replace(/\n?\s*{(start_of_|so)(\w+)(?::\s*(.*?))?\s*}\s*([\s\S]*?)\s*\n?\{(end_of_|eo)(\2)\}\s*/g, (match, prefix, section, title, content) => {
@@ -15,5 +10,22 @@ export class ChordPro {
     .replace(/\n?\s*{(\w+)(?::\s*(.*?))?\s*}\s*/g, '<div class="meta $1">$2</div>') // meta
     .replace(/\[(.*?)\]/g, '<span class="chord">$1</span>') // chords
     .replace(/\n/g, '<br />') // split line
+};
+
+export const wrap = (textarea, before, after, placeholder = '') => {
+  const { selectionStart: start, selectionEnd: end, value } = textarea || {};
+
+  if (textarea && start !== undefined && end !== undefined) {
+    // Insère le placeholder si la sélection est vide
+    const selectedText = start === end ? placeholder : value.substring(start, end);
+
+    requestAnimationFrame(() => {
+      textarea.focus();
+      (start !== end)
+        ? textarea.setSelectionRange(start + before.length, start + before.length + selectedText.length)
+        : textarea.setSelectionRange(start + before.length, start + before.length + placeholder.length);
+    });
+
+    return value.slice(0, start) + before + selectedText + after + value.slice(end);
   }
-}
+};
