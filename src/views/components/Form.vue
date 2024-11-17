@@ -96,10 +96,6 @@
                     v-html="chordPro.toHTML(data.form.item.score)"
                   ></div>
                 </ion-item>
-                <ion-item
-                  v-for="note in chordPro.getNotes(data.form.item.score)"
-                  v-html="note"
-                ></ion-item>
               </ion-list>
             </ion-col>
           </ion-row>
@@ -177,7 +173,7 @@
           <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_chorus}\n', '\n{end_of_chorus}', 'Chorus')"><font-awesome-icon fixed-width :icon="['fas', 'c']" /></ion-button>
           <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_bridge}\n', '\n{end_of_bridge}', 'Bridge')"><font-awesome-icon fixed-width :icon="['fas', 'b']" /></ion-button>
           <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{comment: ', '}', 'Comment')"><font-awesome-icon fixed-width :icon="['fas', 'message']" /></ion-button>
-          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_note}\n', '\n{end_of_note}', 'Note')"><font-awesome-icon fixed-width :icon="['fas', 'thumbtack']" /></ion-button>
+          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_sticker}\n', '\n{end_of_sticker}', 'Sticker')"><font-awesome-icon fixed-width :icon="['fas', 'thumbtack']" /></ion-button>
         </ion-buttons>
         <ion-buttons class="controls ion-hide-lg-up" slot="end">
           <ion-button @click="showScore = !showScore" :color="showScore ? 'primary' : 'secondary'"><font-awesome-icon fixed-width :icon="['fas', showScore ? 'eye' : 'eye-slash']" /></ion-button>

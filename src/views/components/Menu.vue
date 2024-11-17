@@ -122,7 +122,7 @@
         </ion-card-header>
         <ion-card-content>
           <ion-list>
-            <ion-item @click="exportSongbook" class="ion-no-padding" :button="true" :detail="false">
+            <ion-item @click="exportSongbook" class="ion-no-padding" :button="true" :detail="false" download="songs.json">
               <ion-label>{{ $t('export') }}</ion-label>
               <ion-text slot="end">
                 <font-awesome-icon fixed-width :icon="['fas', 'upload']" />
@@ -258,7 +258,7 @@ const onFileChange = (event) => {
 const exportSongbook = () => {
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([JSON.stringify( data.songs , null, 2)], { type: 'application/json' }));
-  a.download = 'songbook.json';
+  a.download = 'songs.json';
   a.click();
   URL.revokeObjectURL(a.href);
 };

@@ -18,26 +18,124 @@
 	font-style: normal;
 }
 
-.notes {
-	position: sticky;
-	bottom: 0;
-}
-
-.note {
-	font-family: 'Inconsolata';
-	font-style: normal;
-	font-weight: 900;
-	line-height: 1.2;
-}
-
 .score {
 	display: inline-block;
 	line-height: 1.4;
 }
 
+.definitions {
+	position: sticky;
+	top: 0;
+	display: flex;
+	align-items: end;
+	flex-wrap: wrap;
+	gap: 1em;
+	z-index: 1;
+}
+
+.definition {
+	font-family: 'Inconsolata';
+	font-style: normal;
+	line-height: 1;
+	background-color: var(--ion-background-color-step-100);
+	border-radius: calc(var(--padding-start) / 4);
+	padding: .4em .7em;
+	width: fit-content;
+}
+
+.definition.frets {
+	display: flex;
+	font-size: .8em;
+	padding: 1.5em .5em calc(var(--padding-start) / 4) 2em;
+}
+
+.definition.frets .string {
+	background-color: var(--ion-text-color);
+}
+
+.definition.frets .string:first-of-type::before {
+	content: attr(data-base);
+	display: block;
+	position: relative;
+	height: 0;
+	top: calc(var(--padding-start) / 8);
+	left: -1.2em;
+}
+
+.definition.frets .string[data-base="1"] {
+}
+
+.definition.frets .fret {
+	background-color: var(--ion-background-color-step-100);
+	width: 1em;
+	height: 1em;
+	margin-top: calc(var(--padding-start) / 8);
+	margin-left: calc(var(--padding-start) / 8);
+}
+
+.definition.frets .fret.active::after {
+	content: attr(data-fret);
+	display: inline-block;
+	background-color: var(--ion-color-primary);
+	border-radius: 50%;
+	position: relative;
+	top: calc(-1em - calc(var(--padding-start) / 8));
+	left: calc(-.5em - calc(var(--padding-start) / 16));
+	width: 1em;
+	height: 1em;
+	text-align: center;
+	overflow: hidden;
+}
+
+.definition.frets .fret:first-of-type.active::after {
+	background-color: transparent;
+	top: calc(-1.4em);
+}
+
+.definition.frets .string:last-of-type .fret {
+	width: 0;
+}
+
+.definition.frets .fret:last-of-type {
+	height: 0;
+}
+
+.definition.keys {
+	display: flex;
+	padding: 2em calc(var(--padding-start) / 8) calc(var(--padding-start) / 4) calc(var(--padding-start) / 8);
+}
+
+.definition.keys .white-key {
+	background-color: var(--ion-text-color);
+	width: .6em;
+	height: 2em;
+	margin-left: calc(var(--padding-start) / 8);
+	margin-right: calc(var(--padding-start) / 8);
+	border-radius: calc(var(--padding-start) / 8);
+}
+
+.definition.keys .black-key {
+	background-color: var(--ion-background-color-step-100);
+	width: .6em;
+	height: 1.2em;
+	margin-left: -.6em;
+	transform: translateX(.3em);
+}
+
+.definition.keys .active {
+	background-color: var(--ion-color-primary);
+}
+
+.definition.keys .active::after {
+	content: attr(data-note);
+	display: inline-block;
+	position: relative;
+	top: -1.5em;
+}
+
 .score .meta {
 	font-weight: 200;
-	margin-top: .5em;
+	margin-top: 1em;
 	margin-bottom: 1em;
 }
 
@@ -46,7 +144,6 @@
 }
 
 .score .section {
-	margin-top: .5em;
 	margin-bottom: 1em;
 }
 
@@ -64,20 +161,13 @@
 .score .chorus,
 .score .c {
 	border-left: .2em solid;
-	padding-left: .8em;
+	padding-left: .5em;
 	font-weight: 900;
 }
 
 .score .bridge,
 .score .b {
 	font-style: italic;
-}
-
-.score .note {
-    height: 0;
-	margin: 0;
-	padding: 0;
-    visibility: hidden;
 }
 
 .score .chord {

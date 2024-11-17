@@ -21,14 +21,9 @@
 
     <ion-content :fullscreen="true">
       <div v-if="data?.songbook?.length > 0" class="slides" :id="data.book.id || 'allSongs'">
-        <div v-for="(song, index) in data.songbook" :key="song.id" :id="song.id" class="slide" @scroll="scrollProgress = $event.target.scrollTop / ($event.target.scrollHeight - $event.target.clientHeight)">
-          <div v-if="song?.score" class="score ion-padding" v-html="chordPro.toHTML(song.score)"></div>
-          <ion-list class="notes ion-no-padding" lines="none" :style="notes ? 'display: unset' : 'display: none'">
-            <ion-item>
-              <ion-label class="noteslist">
-              </ion-label>
-            </ion-item>
-          </ion-list>
+        <div v-for="(song, index) in data.songbook" :key="song.id" :id="song.id" class="slide ion-padding" @scroll="scrollProgress = $event.target.scrollTop / ($event.target.scrollHeight - $event.target.clientHeight)">
+          <div class="definitions" :style="definitions ? 'display: flex' : 'display: none'"></div>
+          <div v-if="song?.score" class="score" v-html="chordPro.toHTML(song.score)"></div>
         </div>
       </div>
       
@@ -51,8 +46,8 @@
           </ion-button>
         </ion-buttons>
         <ion-buttons slot="end">
-          <ion-button @click="togglenotes":color="notes ? 'secondary' : 'primary'">
-            <font-awesome-icon fixed-width :icon="['fas', notes ? 'thumbtack-slash' : 'thumbtack']" />
+          <ion-button @click="toggledefinitions":color="definitions ? 'secondary' : 'primary'">
+            <font-awesome-icon fixed-width :icon="['fas', definitions ? 'thumbtack-slash' : 'thumbtack']" />
           </ion-button>
           <ion-button v-if="data.song.tempo" @click="tempo = !tempo" :class="{ tempo: tempo }" :style="tempo ? `--bpm: ${data.song.tempo}` : ''" :color="tempo ? 'primary' : 'secondary'">
             {{ data.song.tempo }}
@@ -94,11 +89,15 @@ const data = inject('data');
 // Tempo
 const tempo = ref();
 
-// Notes
-const notes = ref(localStorage.getItem('notes') !== 'false');
-const togglenotes = () => {
-  notes.value = !notes.value;
-  localStorage.setItem('notes', notes.value.toString());
+// Definitions
+const definitions = ref(localStorage.getItem('definitions') !== 'false');
+const toggledefinitions = () => {
+  definitions.value = !definitions.value;
+  localStorage.setItem('definitions', definitions.value.toString());
+  document.querySelectorAll('.score .definition').forEach((definition, index) => {
+    if (definitions.value) definition.style.display = 'none';
+    else definition.style.display = 'flex';
+  });
 };
 
 // Progress
@@ -122,7 +121,7 @@ const togglefit = () => {
   localStorage.setItem('autofit', autofit.value.toString());
   slides.value.forEach(slide => {
     if (autofit.value) textFit.auto(slide, slideWidth.value);
-    else slide.style.fontSize = window.getComputedStyle(document.documentElement).fontSize;
+    else slide.style.transform = 'scale(1)';
   });
 };
 
@@ -154,6 +153,13 @@ watch(
       // Observe slide resize
       const resizeSlideObserver = new ResizeObserver((entries) => {
         entries.forEach(entry => {
+          // Definitions
+          document.querySelector('.definitions').innerHTML = [...document.querySelectorAll('.score .definition')].map(el => {
+            el.style.display = 'flex';
+            return el.outerHTML;
+          }).join('');
+          definitions.value && document.querySelectorAll('.score .definition').forEach(definition => definition.style.display = 'none');
+          
           // Progress update
           scrollProgress.value = entry.target.scrollTop / (entry.target.scrollHeight - entry.target.clientHeight) || 0;
           
@@ -180,20 +186,6 @@ watch(
         });
       }, { threshold: 0.99 });
       document.querySelectorAll('.slide').forEach(slide => activeSlideObserver.observe(slide));
-      
-      // Observe notes
-      const activeNotesObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const note = Array.from(document.querySelector('.noteslist').children).find(child => child.isEqualNode(entry.target));
-          
-          if (entry.isIntersecting && !note) {
-            document.querySelector('.noteslist').append(entry.target.cloneNode(true));
-          } else if (!entry.isIntersecting && note) {
-            document.querySelector('.noteslist').removeChild(note);
-          }
-        });
-      }, { threshold: 1 });
-      document.querySelectorAll('.score .note').forEach(note => activeNotesObserver.observe(note));
     });
   },
   { deep: true, immediate: true }
