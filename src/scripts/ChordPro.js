@@ -23,12 +23,12 @@ export const toHTML = (score) => {
         : `<div class="section ${section}">${content.replace(/ /g, '&nbsp;')}</div>`;
     }) // section
     .replace(/\n?\s*{define:\s*(.*?)\s+keys\s*([\d\s]*)\}\s*/g, (match, note, keys) => {
-      return `<div class="section definition keys">${defineKeys({ note, keys: keys ? keys.trim().split(/\s+/).map(Number) : [0] })}</div>`;
+      return `<div class="section definition keys"><span class="note">${note.trim()}</span>${defineKeys({ note, keys: keys ? keys.trim().split(/\s+/).map(Number) : [0] })}</div>`;
     }) // keys definition
     .replace(/\n?\s*{define:\s*(.*?)\s+base-fret\s+(\d+)\s+frets\s+([-0-9xX\s]+)(?:\s+fingers\s+([-0-9A-Za-z\s]+))?\}\s*/g, (match, note, baseFret, frets, fingers) => {
       const fretsArray = frets.trim() ? frets.trim().split(/\s+/).map(pos => (pos === 'x' || pos === 'X' || pos === '-1' ? -1 : parseInt(pos, 10))) : [0];
       const fingersArray = fingers ? fingers.trim().split(/\s+/).map(pos => (pos === 'x' || pos === 'X' || pos === '-' ? null : pos)) : [];
-      return `<div class="section definition frets">${defineFrets({ note, baseFret: parseInt(baseFret, 10), frets: fretsArray, fingers: fingersArray })}</div>`;
+      return `<div class="section definition frets"><span class="note">${note.trim()}</span>${defineFrets({ note, baseFret: parseInt(baseFret, 10), frets: fretsArray, fingers: fingersArray })}</div>`;
     }) // frets definition
     .replace(/\n?\s*{(\w+)(?::\s*(.*?))?\s*}\s*/g, '<div class="meta $1">$2</div>') // meta
     .replace(/\[(.*?)\]/g, '<span class="chord">$1</span>') // chords

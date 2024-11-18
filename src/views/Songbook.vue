@@ -154,11 +154,11 @@ watch(
       const resizeSlideObserver = new ResizeObserver((entries) => {
         entries.forEach(entry => {
           // Definitions
-          document.querySelector('.definitions').innerHTML = [...document.querySelectorAll('.score .definition')].map(el => {
+          entry.target.querySelector('.definitions').innerHTML = [...entry.target.querySelectorAll('.score .definition')].map(el => {
             el.style.display = 'flex';
             return el.outerHTML;
           }).join('');
-          definitions.value && document.querySelectorAll('.score .definition').forEach(definition => definition.style.display = 'none');
+          definitions.value && entry.target.querySelectorAll('.score .definition').forEach(definition => definition.style.display = 'none');
           
           // Progress update
           scrollProgress.value = entry.target.scrollTop / (entry.target.scrollHeight - entry.target.clientHeight) || 0;
