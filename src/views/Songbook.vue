@@ -142,6 +142,14 @@ const load = () => {
       : data.songs.find(() => true);
 };
 
+// Key actions mapping
+const keyActions = {
+  arrowup: { element: '.slide', direction: 'top', value: -100 },
+  arrowdown: { element: '.slide', direction: 'top', value: 100 },
+  arrowleft: { element: '.slides', direction: 'left', value: -1 },
+  arrowright: { element: '.slides', direction: 'left', value: 1 },
+};
+
 watch(
   () => [data.songs, data.books, route.hash],
   () => {
@@ -153,6 +161,15 @@ watch(
       // Observe slide resize
       const resizeSlideObserver = new ResizeObserver((entries) => {
         entries.forEach(entry => {
+          // Wait for a key press
+          window.addEventListener("keydown", (event) => {
+            const action = keyActions[event.key.toLowerCase()];
+            if (action) {
+              event.preventDefault();
+              entry.target.closest(action.element).scrollBy({ [action.direction]: action.value, behavior: 'smooth' });
+            }
+          });
+          
           // Definitions
           entry.target.querySelector('.definitions').innerHTML = [...entry.target.querySelectorAll('.score .definition')].map(el => {
             el.style.display = 'flex';
