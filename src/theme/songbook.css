@@ -27,10 +27,12 @@
 	position: sticky;
 	top: 0;
 	display: flex;
-	justify-content: center;
+	/*justify-content: space-between;*/
+	align-items: start;
 	flex-wrap: wrap;
 	gap: var(--padding-start);
 	z-index: 1;
+	transform: translateY(-1em);
 }
 
 .definition {
@@ -40,6 +42,7 @@
 	background-color: var(--ion-toolbar-background);
 	border-radius: calc(var(--padding-start) / 4);
 	width: fit-content;
+	margin-top: 1em;
 }
 
 .definition .note {
@@ -126,12 +129,14 @@
 
 .definition.keys .black-key {
 	background-color: var(--ion-toolbar-background);
-	width: .5em;
+	width: .6em;
 	height: 1.2em;
 	margin-left: -.6em;
-	transform: translateX(.3em);
-	border: .05em solid var(--ion-toolbar-background);
-	border-top: 0;
+	margin-top: calc(0px - var(--padding-start) / 16);
+	transform: translateX(50%);
+	border: calc(var(--padding-start) / 16) solid var(--ion-toolbar-background);
+	border-radius: calc(var(--padding-start) / 16);
+	
 }
 
 .definition.keys .active {
@@ -154,12 +159,13 @@
 	margin-bottom: 1em;
 }
 
-.score .section-title {
-	font-weight: 200;
-}
-
 .score .section {
 	margin-bottom: 1em;
+}
+
+.score .section-title {
+	font-family: var(--ion-font-family);
+	font-weight: 200;
 }
 
 .score .tab,

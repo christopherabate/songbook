@@ -185,7 +185,7 @@ watch(
           autoscroll.value = new AutoScroll(entry.target, data.song?.duration);
 
           // Autofit
-          slides.value = document.querySelectorAll('.score');
+          slides.value = entry.target.querySelectorAll('.score');
           slideWidth.value = entry.contentRect.width;
           autofit.value && slides.value.forEach(slide => textFit.auto(slide, slideWidth.value));
         });

@@ -166,13 +166,13 @@
     <ion-footer>
       <ion-toolbar v-if="data.form.type === 'songs'">
         <ion-buttons class="controls" slot="start">
-          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '[', ']')"><font-awesome-icon fixed-width :icon="['fas', 'music']" /></ion-button>
-          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_tab}\n', '\n{end_of_tab}', 'e|----|\nB|----|\nG|----|\nD|----|\nA|----|\nE|----|')"><font-awesome-icon fixed-width :icon="['fas', 'border-none']" /></ion-button>
           <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{define: ', ' base-fret 1 frets x 3 2 0 1 0}', 'C')"><font-awesome-icon fixed-width :icon="['fas', 'guitar']" /></ion-button>
-          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{define: ', ' keys 1 3 5}', 'C')"><font-awesome-icon :icon="['fas', 'table-list']" rotation="90" /></ion-button>
+          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{define: ', ' keys 1 3 5}', 'C')"><font-awesome-icon fixed-width :icon="['fas', 'square-full']" transform="left-10" :mask="['fas', 'table-list']" rotation="90"/></ion-button>
           <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_verse}\n', '\n{end_of_verse}', 'Verse')"><font-awesome-icon fixed-width :icon="['fas', 'v']" /></ion-button>
           <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_chorus}\n', '\n{end_of_chorus}', 'Chorus')"><font-awesome-icon fixed-width :icon="['fas', 'c']" /></ion-button>
           <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_bridge}\n', '\n{end_of_bridge}', 'Bridge')"><font-awesome-icon fixed-width :icon="['fas', 'b']" /></ion-button>
+          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '[', ']')"><font-awesome-icon fixed-width :icon="['fas', 'music']" /></ion-button>
+          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_tab}\n', '\n{end_of_tab}', 'e|----|\nB|----|\nG|----|\nD|----|\nA|----|\nE|----|')"><font-awesome-icon fixed-width :icon="['fas', 'table-cells']" /></ion-button>
           <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{comment: ', '}', 'Comment')"><font-awesome-icon fixed-width :icon="['fas', 'tag']" /></ion-button>
         </ion-buttons>
         <ion-buttons class="controls ion-hide-lg-up" slot="end">

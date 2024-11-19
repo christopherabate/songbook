@@ -19,7 +19,7 @@ export const toHTML = (score) => {
     .replace(/^#(.*)$/gm, '<div class="hidden">$1</div>')
     .replace(/\n?\s*{(start_of_|so)(\w+)(?::\s*(.*?))?\s*}\s*([\s\S]*?)\s*\n?\{(end_of_|eo)(\2)\}\s*/g, (match, prefix, section, title, content) => {
       return title
-        ? `<div class="section-title">${title.trim()}</div><div class="section ${section}">${content.replace(/ /g, '&nbsp;')}</div>`
+        ? `<div class="section ${section}"><div class="section-title">${title.trim()}</div>${content.replace(/ /g, '&nbsp;')}</div>`
         : `<div class="section ${section}">${content.replace(/ /g, '&nbsp;')}</div>`;
     }) // section
     .replace(/\n?\s*{define:\s*(.*?)\s+keys\s*([\d\s]*)\}\s*/g, (match, note, keys) => {

@@ -65,7 +65,7 @@ import '@ionic/vue/css/palettes/dark.system.css';
 import './theme/variables.css';
 
 const app = createApp(App)
-  .use(IonicVue)
+  .use(IonicVue, { mode: 'ios' })
   .use(i18n)
   .use(router);
 
@@ -79,7 +79,7 @@ Object.keys(IonComponents).forEach(key => {
 /* Load FontAwesome */
 app.component('font-awesome-icon', FontAwesomeIcon);
 app.component('font-awesome-layers', FontAwesomeLayers);
-app.component('font-awesome-layer-text', FontAwesomeLayersText);
+app.component('font-awesome-layers-text', FontAwesomeLayersText);
 
 router.isReady().then(() => {
   app.mount('#app');
