@@ -54,7 +54,7 @@ export const wrap = (textarea, before, after, placeholder = '') => {
 
 export const defineFrets = (definition) => {
   return [...Array(6)].map((_, string) => // 6 strings
-    `<div class="string ${string}-string" data-base="${definition.baseFret}">${
+    `<div class="string" data-base="${definition.baseFret}" data-string="${string}">${
       [...Array(5)].map((_, fret) => { // 5 frets
         const dataFret =
           definition.frets[string] === -1 && fret === 0
@@ -64,7 +64,7 @@ export const defineFrets = (definition) => {
               : definition.frets[string] === fret
                 ? (definition.fingers[string] || ' ')
                 : '';
-        return `<div class="fret ${definition.baseFret + fret}-fret ${dataFret ? 'active' : ''}" data-fret="${dataFret}"></div>`
+        return `<div class="fret ${dataFret ? 'active' : ''}" data-fret="${definition.baseFret + fret}" data-position="${dataFret}"></div>`
       }).join('')
     }</div>`
   ).join('');
