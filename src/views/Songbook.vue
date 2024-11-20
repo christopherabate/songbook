@@ -142,14 +142,6 @@ const load = () => {
       : data.songs.find(() => true);
 };
 
-// Key actions mapping
-const keyActions = {
-  arrowup: { element: '.slide', direction: 'top', value: -100 },
-  arrowdown: { element: '.slide', direction: 'top', value: 100 },
-  arrowleft: { element: '.slides', direction: 'left', value: -1 },
-  arrowright: { element: '.slides', direction: 'left', value: 1 },
-};
-
 watch(
   () => [data.songs, data.books, route.hash],
   () => {
@@ -161,15 +153,18 @@ watch(
       // Observe slide resize
       const resizeSlideObserver = new ResizeObserver((entries) => {
         entries.forEach(entry => {
-          // Wait for a key press
+          // Keyboard scroll
+          const keyActions = {
+            arrowup: (target) => target?.scrollBy({ top: -100, behavior: 'smooth' }),
+            arrowdown: (target) => target?.scrollBy({ top: 100, behavior: 'smooth' }),
+            arrowleft: (target) => target?.previousElementSibling?.scrollIntoView({ behavior: "instant"}),
+            arrowright: (target) => target?.nextElementSibling?.scrollIntoView({ behavior: "instant"}),
+          };
           window.addEventListener("keydown", (event) => {
             const action = keyActions[event.key.toLowerCase()];
-            if (action) {
-              event.preventDefault();
-              entry.target.closest(action.element).scrollBy({ [action.direction]: action.value, behavior: 'smooth' });
-            }
+            if (action) action(entry.target);
           });
-          
+
           // Definitions
           entry.target.querySelector('.definitions').innerHTML = [...entry.target.querySelectorAll('.score .definition')].map(el => {
             el.style.display = 'flex';
@@ -185,7 +180,7 @@ watch(
           autoscroll.value = new AutoScroll(entry.target, data.song?.duration);
 
           // Autofit
-          slides.value = entry.target.querySelectorAll('.score');
+          slides.value = entry.target.parentElement.querySelectorAll('.score');
           slideWidth.value = entry.contentRect.width;
           autofit.value && slides.value.forEach(slide => textFit.auto(slide, slideWidth.value));
         });
