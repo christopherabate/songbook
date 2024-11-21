@@ -13,8 +13,10 @@ import { ref, reactive, computed, provide, onMounted } from 'vue';
 import Menu from '@/views/components/Menu.vue';
 import Form from '@/views/components/Form.vue';
 import * as songbook from '@/services/Songbook';
+import * as global from '@/services/Global';
 
 const data = reactive(songbook.data);
+const settings = reactive(global.settings);
 
 const sync = async () => {
   await songbook.sync();
@@ -25,4 +27,5 @@ onMounted(() => {
 });
 
 provide('data', data);
+provide('settings', settings);
 </script>

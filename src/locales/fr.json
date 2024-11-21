@@ -1,6 +1,8 @@
 {
   "settings": "Préférences",
   "display": "Affichage",
+  "definitions": "Épingler les définitions",
+  "autofit": "Ajuster à la largeur",
   "data": "Données",
   "import": "Importer",
   "export": "Exporter",

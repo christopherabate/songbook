@@ -113,10 +113,10 @@
               </ion-select>
             </ion-item>
             <ion-item class="ion-no-padding">
-              <ion-toggle>Épingler les définitions</ion-toggle>
+              <ion-toggle @ionChange="settings.definitions = !settings.definitions" :checked="settings.definitions">{{ $t('definitions') }}</ion-toggle>
             </ion-item>
             <ion-item class="ion-no-padding">
-              <ion-toggle>Ajuster à la largeur</ion-toggle>
+              <ion-toggle @ionChange="settings.autofit = !settings.autofit" :checked="settings.autofit">{{ $t('autofit') }}</ion-toggle>
             </ion-item>
           </ion-list>
         </ion-card-content>
@@ -187,6 +187,9 @@ const changeLocale = (event) => {
 
 // Data
 const data = inject('data');
+
+// Settings
+const settings = inject('settings');
 
 // Default opened Tab
 const tab = ref('books');

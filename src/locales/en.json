@@ -1,6 +1,8 @@
 {
   "settings": "Settings",
   "display": "Display",
+  "definitions": "Pin definitions",
+  "autofit": "Adjust to width",
   "data": "Data",
   "import": "Import",
   "export": "Export",

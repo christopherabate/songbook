@@ -22,7 +22,7 @@
     <ion-content :fullscreen="true">
       <div v-if="data?.songbook?.length > 0" class="slides" :id="data.book.id || 'allSongs'">
         <div v-for="(song, index) in data.songbook" :key="song.id" :id="song.id" class="slide ion-padding" @scroll="scrollProgress = $event.target.scrollTop / ($event.target.scrollHeight - $event.target.clientHeight)">
-          <div class="definitions" :style="definitions ? 'display: flex' : 'display: none'"></div>
+          <div class="definitions" :style="settings.definitions ? 'display: flex' : 'display: none'"></div>
           <div v-if="song?.score" class="score" v-html="chordPro.toHTML(song.score)"></div>
         </div>
       </div>
@@ -46,8 +46,8 @@
           </ion-button>
         </ion-buttons>
         <ion-buttons slot="end">
-          <ion-button @click="toggledefinitions":color="definitions ? 'secondary' : 'primary'">
-            <font-awesome-icon fixed-width :icon="['fas', definitions ? 'thumbtack-slash' : 'thumbtack']" />
+          <ion-button @click="settings.definitions = !settings.definitions" :color="settings.definitions ? 'secondary' : 'primary'">
+            <font-awesome-icon fixed-width :icon="['fas', settings.definitions ? 'thumbtack-slash' : 'thumbtack']" />
           </ion-button>
           <ion-button v-if="data.song.tempo" @click="tempo = !tempo" :class="{ tempo: tempo }" :style="tempo ? `--bpm: ${data.song.tempo}` : ''" :color="tempo ? 'primary' : 'secondary'">
             {{ data.song.tempo }}
@@ -63,8 +63,8 @@
           <ion-button v-else disabled="true">
             <font-awesome-icon fixed-width :icon="['fas', 'clock']" />
           </ion-button>
-          <ion-button @click="togglefit" :color="autofit ? 'secondary' : 'primary'">
-            <font-awesome-icon fixed-width :icon="['fas', autofit ? 'down-left-and-up-right-to-center' : 'up-right-and-down-left-from-center']" />
+          <ion-button @click="settings.autofit = !settings.autofit" :color="settings.autofit ? 'secondary' : 'primary'">
+            <font-awesome-icon fixed-width :icon="['fas', settings.autofit ? 'down-left-and-up-right-to-center' : 'up-right-and-down-left-from-center']" />
           </ion-button>
         </ion-buttons>
       </ion-toolbar>
@@ -86,19 +86,11 @@ const router = useRouter();
 // Data
 const data = inject('data');
 
+// Settings
+const settings = inject('settings');
+
 // Tempo
 const tempo = ref();
-
-// Definitions
-const definitions = ref(localStorage.getItem('definitions') !== 'false');
-const toggledefinitions = () => {
-  definitions.value = !definitions.value;
-  localStorage.setItem('definitions', definitions.value.toString());
-  document.querySelectorAll('.score .definition').forEach((definition, index) => {
-    if (definitions.value) definition.style.display = 'none';
-    else definition.style.display = 'flex';
-  });
-};
 
 // Progress
 const scrollProgress = ref(0);
@@ -110,19 +102,6 @@ const togglescroll = () => {
   if (scrolling.value) autoscroll.value.pause();
   else autoscroll.value.play(() => (scrolling.value = false));
   scrolling.value = !scrolling.value;
-};
-
-// Autofit
-const slides = ref([]);
-const slideWidth = ref();
-const autofit = ref(localStorage.getItem('autofit') !== 'false');
-const togglefit = () => {
-  autofit.value = !autofit.value;
-  localStorage.setItem('autofit', autofit.value.toString());
-  slides.value.forEach(slide => {
-    if (autofit.value) textFit.auto(slide, slideWidth.value);
-    else slide.style.transform = 'scale(1)';
-  });
 };
 
 // Data
@@ -143,7 +122,7 @@ const load = () => {
 };
 
 watch(
-  () => [data.songs, data.books, route.hash],
+  () => [data.songs, data.books, settings, route.hash],
   () => {
     load();
     nextTick(() => {
@@ -167,13 +146,15 @@ watch(
               action(entry.target);
             }
           });
-
+          
           // Definitions
-          entry.target.querySelector('.definitions').innerHTML = [...entry.target.querySelectorAll('.score .definition')].map(el => {
-            el.style.display = 'flex';
-            return el.outerHTML;
-          }).join('');
-          definitions.value && entry.target.querySelectorAll('.score .definition').forEach(definition => definition.style.display = 'none');
+          entry.target.parentElement.querySelectorAll('.definitions').forEach(definitions => {
+            definitions.innerHTML = [...definitions.parentElement.querySelectorAll('.score .definition')].map(definition => {
+              definition.style.display = 'flex';
+              return definition.outerHTML;
+            }).join('');
+          });
+          settings.definitions && entry.target.parentElement.querySelectorAll('.score .definition').forEach(definition => definition.style.display = 'none');
           
           // Progress update
           scrollProgress.value = entry.target.scrollTop / (entry.target.scrollHeight - entry.target.clientHeight) || 0;
@@ -183,9 +164,10 @@ watch(
           autoscroll.value = new AutoScroll(entry.target, data.song?.duration);
 
           // Autofit
-          slides.value = entry.target.parentElement.querySelectorAll('.score');
-          slideWidth.value = entry.contentRect.width;
-          autofit.value && slides.value.forEach(slide => textFit.auto(slide, slideWidth.value));
+          entry.target.parentElement.querySelectorAll('.score').forEach(slide => {
+            if (settings.autofit) textFit.auto(slide, entry.contentRect.width);
+            else slide.style.transform = 'scale(1)';
+          });
         });
       });
 
