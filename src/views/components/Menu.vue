@@ -112,6 +112,12 @@
                 >{{ availableLocale }}</ion-select-option>
               </ion-select>
             </ion-item>
+            <ion-item class="ion-no-padding">
+              <ion-toggle>Épingler les définitions</ion-toggle>
+            </ion-item>
+            <ion-item class="ion-no-padding">
+              <ion-toggle>Ajuster à la largeur</ion-toggle>
+            </ion-item>
           </ion-list>
         </ion-card-content>
       </ion-card>

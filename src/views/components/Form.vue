@@ -173,7 +173,7 @@
           <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_bridge}\n', '\n{end_of_bridge}', 'Bridge')"><font-awesome-icon fixed-width :icon="['fas', 'b']" /></ion-button>
           <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '[', ']')"><font-awesome-icon fixed-width :icon="['fas', 'music']" /></ion-button>
           <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{start_of_tab}\n', '\n{end_of_tab}', 'e|----|\nB|----|\nG|----|\nD|----|\nA|----|\nE|----|')"><font-awesome-icon fixed-width :icon="['fas', 'table-cells']" /></ion-button>
-          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{comment: ', '}', 'Comment')"><font-awesome-icon fixed-width :icon="['fas', 'tag']" /></ion-button>
+          <ion-button @click="data.form.item.score = chordPro.wrap(editor.$el.querySelector('textarea'), '{comment: ', '}', 'Comment')"><font-awesome-icon fixed-width :icon="['fas', 'comment']" /></ion-button>
         </ion-buttons>
         <ion-buttons class="controls ion-hide-lg-up" slot="end">
           <ion-button @click="showScore = !showScore" :color="showScore ? 'primary' : 'secondary'"><font-awesome-icon fixed-width :icon="['fas', showScore ? 'eye' : 'eye-slash']" /></ion-button>

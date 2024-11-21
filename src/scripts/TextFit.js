@@ -1,4 +1,4 @@
-export const auto = (element, width, maxScale = 3, minScale = .8) => {
+export const auto = (element, width, maxScale = 2.5, minScale = .75) => {
   element.style.transform = `scale(${Math.min(maxScale, Math.max(minScale, width / element.offsetWidth))})`;
   element.style.transformOrigin = 'left top';
 };

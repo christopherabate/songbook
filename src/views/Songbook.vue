@@ -157,8 +157,8 @@ watch(
           const keyActions = {
             arrowup: (target) => target?.scrollBy({ top: -100, behavior: 'smooth' }),
             arrowdown: (target) => target?.scrollBy({ top: 100, behavior: 'smooth' }),
-            arrowleft: (target) => target?.previousElementSibling?.scrollIntoView({ behavior: "instant"}),
-            arrowright: (target) => target?.nextElementSibling?.scrollIntoView({ behavior: "instant"}),
+            arrowleft: (target) => target?.previousElementSibling?.scrollIntoView({ behavior: "smooth"}),
+            arrowright: (target) => target?.nextElementSibling?.scrollIntoView({ behavior: "smooth"}),
           };
           window.addEventListener("keydown", (event) => {
             const action = keyActions[event.key.toLowerCase()];

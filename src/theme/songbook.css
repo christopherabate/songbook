@@ -73,11 +73,12 @@
 	background-color: var(--ion-text-color-step-600);
 	border-radius: 50%;
 	width: .5em;
-	height: .5em;
+	height: 0;
 	display: block;
 	position: relative;
 	left: calc(-.75em - 1px);
 	top: .25em;
+	overflow: visible;
 }
 
 .definition.frets .string[data-string="3"] .fret:not(:last-of-type)[data-fret="3"]::before,
@@ -120,7 +121,7 @@
 
 .definition.frets .fret.active::after {
 	content: attr(data-position);
-	display: inline-block;
+	display: block;
 	background-color: var(--ion-color-primary);
 	border-radius: 50%;
 	position: relative;
@@ -130,6 +131,7 @@
 	height: 1em;
 	text-align: center;
 	overflow: hidden;
+	z-index: 10;
 }
 
 .definition.frets .fret:first-of-type.active::after {
@@ -193,7 +195,7 @@
 }
 
 .score .section {
-	margin-bottom: 1em;
+	margin-bottom: 1.5em;
 }
 
 .score .section-title {
@@ -214,7 +216,7 @@
 
 .score .chorus,
 .score .c {
-	border-left: .2em solid;
+	border-left: .2em solid var(--ion-color-primary);
 	padding-left: .5em;
 	font-weight: 900;
 }
@@ -222,6 +224,7 @@
 .score .bridge,
 .score .b {
 	font-style: italic;
+	background-color: var(--ion-background-color-step-50);
 }
 
 .score .chord {
