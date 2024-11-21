@@ -1,19 +1,19 @@
 {
   "songs": [
     {
+      "id": "cb3ea10a-3f13-417a-b69e-ee9ea5a01533",
       "title": "Ashes Of Mind",
       "artist": "Hoflaw",
       "tempo": 76,
-      "score": "{comment: INTRO (x2)}\n\n{define: C7 base-fret 1 frets x 3 2 3 1 0}\n\n{define: C7 base-fret 1 frets x 3 2 3 1 0}\n\n{define: C keys 1 4 7}\n\n{define: C7 base-fret 1 frets x 3 2 3 1 0}\n\n{start_of_chorus}\nChorus\n{end_of_chorus}\n\n{define: A base-fret 4 frets 1 3 3 2 1 1 fingers 1 3 4 2 1 1}\n\n{comment: RIFF (x2)}\n\n{define: C keys 1 4 7}\n\n{define: C keys 1 4 7}\n\n{start_of_chorus}\nChorus\n{end_of_chorus}\n\n{comment: SOLO (x2)}\n\n{start_of_verse}\nLook, right through my mind\nDon’t be so blind, tell me what you find\nPlease, tell me a lie\nIf you wanna try, I won’t be shy\n{end_of_verse}\n\n{comment: RIFF (x2)}\n\n{start_of_verse}\nAnd if you wanna stay\nIf you wanna play, I know what to say\nAshes everywhere\nMy head outhere, my mind elsewhere\n{end_of_verse}\n\n{comment: BREAK (x2)}\n\n{comment: SOLO (x2)}\n\n{start_of_note}\nCool SOLO\n{end_of_note}\n\n{comment: RIFF (x2)}\n\n{start_of_verse}\nLook, right through my mind\nDon’t be so blind, tell me what you find\nAshes everywhere\nMy head outhere, my mind elsewhere\n{end_of_verse}\n\n{comment: RIFF (x2)}\n\n{comment: STOP}",
       "duration": "300",
-      "id": "cb3ea10a-3f13-417a-b69e-ee9ea5a01533"
+      "score": "{comment: Intro (x2)}\n\n{start_of_chorus: Chorus}\nRiff\nSolo (x2)\n{end_of_chorus}\n\n{start_of_verse}\nLook, right through my mind\nDon’t be so blind, tell me what you find\nPlease, tell me a lie\nIf you wanna try, I won’t be shy\n{end_of_verse}\n\n{start_of_chorus: Chorus}\nRiff (x2)\n{end_of_chorus}\n\n{start_of_verse}\nAnd if you wanna stay\nIf you wanna play, I know what to say\nAshes everywhere\nMy head outhere, my mind elsewhere\n{end_of_verse}\n\n{start_of_bridge}\nBridge (x2)\n{end_of_bridge}\n\n{start_of_chorus: Chorus}\nSolo (x2)\nRiff (x2)\n{end_of_chorus}\n\n{start_of_verse}\nLook, right through my mind\nDon’t be so blind, tell me what you find\nAshes everywhere\nMy head outhere, my mind elsewhere\n{end_of_verse}\n\n{start_of_chorus: Chorus}\nRiff (x2)\nSTOP\n{end_of_chorus}"
     },
     {
       "id": "b17e56d8-2eb0-4a75-9ed1-8156b706409f",
       "title": "October Sky",
       "artist": "Hoflaw",
       "tempo": 62,
-      "score": "{comment: Intro}\n\n{define: Left hand keys 4 5 6 7}\n{define: Right hand keys 9 12 16}\n\n{comment: Synth lead}\n\n{comment: Guitar lead}\n\n{comment: Drums + Bass lead}\n\n{start_of_verse: Verse 1}\nDon’t you - Remember when\nWe were made - For each other\nThrowing -  Away our pain\nOver the sky -  Of October\n{end_of_verse}\n\n{comment: Guitar lead}\n\n{comment: Synth lead}\n\n{start_of_verse: Verse 2}\nTake me - To the place\nWhere everything's -  Happened\nShow me - Again this star\nBetween - Between the trees\n{end_of_verse}\n\n{start_of_bridge: Bridge}\nBreak\n{end_of_bridge}\n\n{comment: Guitar lead}\n\n{comment: Outro}\n"
+      "score": "{comment: Intro}\n\n{define: Left hand keys 4 5 6 7}\n{define: Right hand keys 9 12 16}\n\n{comment: Synth lead}\n\n{comment: Guitar lead}\n\n{comment: Drums + Bass lead}\n\n{start_of_verse: Verse 1}\nDon’t you - Remember when\nWe were made - For each other\nThrowing -  Away our pain\nOver the sky -  Of October\n{end_of_verse}\n\n{comment: Guitar lead}\n\n{comment: Synth lead}\n\n{start_of_verse: Verse 2}\nTake me - To the place\nWhere everything's -  Happened\nShow me - Again this star\nBetween - Between the trees\n{end_of_verse}\n\n{start_of_bridge: Bridge}\nBREAK\n{end_of_bridge}\n\n{comment: Guitar lead}\n\n{comment: Outro}\n"
     },
     {
       "id": "114d13e6-b163-48c1-8881-31c4df4ffb6b",
@@ -26,7 +26,7 @@
       "id": "35349b2c-e500-4bec-a99b-fa4951c3ed23",
       "title": "Umbra Renascentis",
       "artist": "Hoflaw",
-      "score": "{start_of_verse: Intro / Verse}  \nGuitar 1  \nGuitar 2  - (E)  \n{end_of_verse}\n\n{start_of_chorus: Chorus}  \nGuitar 1  \nGuitar 2 - Riff Treble  \n{end_of_chorus}\n\n{start_of_verse: Verse}  \nGuitar 1  \nGuitar 2 - Arpeggio  \n{end_of_verse}\n\n{start_of_chorus: Chorus}  \nGuitar 1  \nGuitar 2 - Riff Treble  \n{end_of_chorus}\n\n{start_of_verse: Break}  \nBass  \n{end_of_verse}\n\n{start_of_bridge: Bridge}  \nBass  \nBass + Guitar 1  \nBass + Guitar 1 + Guitar 2 (x2)  \n{end_of_bridge}\n\n{start_of_verse: Outro}  \nGuitar 1  \nGuitar 2  - (E)  \n{end_of_verse}"
+      "score": "{start_of_verse: Intro / Verse}  \nGuitar 1  \nGuitar 2  - (E)  \n{end_of_verse}\n\n{start_of_chorus: Chorus}  \nGuitar 1  \nGuitar 2 - Riff Treble  \n{end_of_chorus}\n\n{start_of_verse: Verse}  \nGuitar 1  \nGuitar 2 - Arpeggio  \n{end_of_verse}\n\n{start_of_chorus: Chorus}  \nGuitar 1  \nGuitar 2 - Riff Treble  \n{end_of_chorus}\n\n{start_of_verse: BREAK}  \nBass  \n{end_of_verse}\n\n{start_of_bridge: Bridge}  \nBass  \nBass + Guitar 1  \nBass + Guitar 1 + Guitar 2 (x2)  \n{end_of_bridge}\n\n{start_of_verse: Outro}  \nGuitar 1  \nGuitar 2  - (E)  \n{end_of_verse}"
     },
     {
       "id": "0342acb8-da53-4293-a00b-a118817fb835",
@@ -52,7 +52,7 @@
       "artist": "Hoflaw",
       "tempo": "132",
       "duration": "320",
-      "score": "{start_of_tab: Intro/Verse/Chorus}\n     C    G    D#\nG|--------12---8---|\nD|---10---12---8---|\nA|---10---10---6---|\nE|---8-------------|\n{end_of_tab}\n\n{start_of_chorus: Intro}\n{end_of_chorus}\n\n{start_of_verse: Verse 1}\nBlack seed\nDon’t make me swallow black seeds\nTo turn me into black weed\nIt’s not what you want\n{end_of_verse}\n\n{start_of_chorus: Chorus}\n{end_of_chorus}\n\n{start_of_verse: Verse 2}\nSeems real\nWhen you talk about your dreams\nEven I know what it means\nIt’s not what I want\n{end_of_verse}\n\n{start_of_tab: Bridge}\n     C    Bb  G       F   E\nG|----------------|-----------|\nD|---10---8---5---|---3---2---|\nA|---10---8---5---|---3---2---|\nE|---8----6---3---|---1---0---|\n{end_of_tab}\n\n{comment: BREAK}\n\n{start_of_chorus}\n{end_of_chorus}\n\n{start_of_verse: Verse 3}\nBlack seed\nDon’t make me swallow black seeds\nTo turn me into black weed\nIt’s not what you want\n{end_of_verse}\n\n{start_of_chorus: Chorus}\nSolo\nOutro\n{end_of_chorus}\n"
+      "score": "{start_of_tab: Intro/Verse/Chorus}\n     C    G    D#\nG|--------12---8---|\nD|---10---12---8---|\nA|---10---10---6---|\nE|---8-------------|\n{end_of_tab}\n\n{start_of_chorus: Intro}\n{end_of_chorus}\n\n{start_of_verse: Verse 1}\nBlack seed\nDon’t make me swallow black seeds\nTo turn me into black weed\nIt’s not what you want\n{end_of_verse}\n\n{start_of_chorus: Chorus}\n{end_of_chorus}\n\n{start_of_verse: Verse 2}\nSeems real\nWhen you talk about your dreams\nEven I know what it means\nIt’s not what I want\n{end_of_verse}\n\n{start_of_bridge: Bridge}\n{end_of_bridge}\n{start_of_tab}\n     C    Bb  G       F   E\nG|----------------|-----------|\nD|---10---8---5---|---3---2---|\nA|---10---8---5---|---3---2---|\nE|---8----6---3---|---1---0---|\n{end_of_tab}\n\n{comment: BREAK}\n\n{start_of_chorus}\n{end_of_chorus}\n\n{start_of_verse: Verse 3}\nBlack seed\nDon’t make me swallow black seeds\nTo turn me into black weed\nIt’s not what you want\n{end_of_verse}\n\n{start_of_chorus: Chorus}\nSolo\nOutro\n{end_of_chorus}\n"
     },
     {
       "id": "12e6e5ff-adbe-47f8-9b81-904e07640588",

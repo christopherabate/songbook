@@ -266,7 +266,7 @@ const onFileChange = (event) => {
 // Export
 const exportSongbook = () => {
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([JSON.stringify( data.songs , null, 2)], { type: 'application/json' }));
+  a.href = URL.createObjectURL(new Blob([JSON.stringify( {songs: data.songs} , null, 2)], { type: 'application/json' }));
   a.download = 'songs.json';
   a.click();
   URL.revokeObjectURL(a.href);

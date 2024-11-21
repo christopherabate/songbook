@@ -181,7 +181,7 @@ watch(
             resizeSlideObserver.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.99 });
+      }, { threshold: 0.75 });
       document.querySelectorAll('.slide').forEach(slide => activeSlideObserver.observe(slide));
     });
   },
