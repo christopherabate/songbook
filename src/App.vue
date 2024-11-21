@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, provide, onMounted } from 'vue';
+import { reactive, provide, onMounted } from 'vue';
 import Menu from '@/views/components/Menu.vue';
 import Form from '@/views/components/Form.vue';
 import * as songbook from '@/services/Songbook';

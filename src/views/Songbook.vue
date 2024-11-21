@@ -156,9 +156,6 @@ watch(
           });
           settings.definitions && entry.target.parentElement.querySelectorAll('.score .definition').forEach(definition => definition.style.display = 'none');
           
-          // Progress update
-          scrollProgress.value = entry.target.scrollTop / (entry.target.scrollHeight - entry.target.clientHeight) || 0;
-          
           // Setup Autoscroll
           scrolling.value && togglescroll();
           autoscroll.value = new AutoScroll(entry.target, data.song?.duration);
@@ -168,6 +165,9 @@ watch(
             if (settings.autofit) textFit.auto(slide, entry.contentRect.width);
             else slide.style.transform = 'scale(1)';
           });
+          
+          // Progress update
+          scrollProgress.value = entry.target.scrollTop / (entry.target.scrollHeight - entry.target.clientHeight) || 0;
         });
       });
 
