@@ -162,7 +162,10 @@ watch(
           };
           window.addEventListener("keydown", (event) => {
             const action = keyActions[event.key.toLowerCase()];
-            if (action) action(entry.target);
+            if (action) {
+              event.preventDefault();  
+              action(entry.target);
+            }
           });
 
           // Definitions
