@@ -175,14 +175,17 @@ watch(
       const activeSlideObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            resizeSlideObserver.observe(entry.target);
+            entry.target.scrollIntoView({ behavior: "smooth"})
+            //resizeSlideObserver.observe(entry.target);
             router.replace({ hash: '#' + entry.target.id });
-          } else {
-            resizeSlideObserver.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.75 });
-      document.querySelectorAll('.slide').forEach(slide => activeSlideObserver.observe(slide));
+      }, { threshold: .9 });
+
+      document.querySelectorAll('.slide').forEach(slide => {
+        activeSlideObserver.observe(slide);
+        resizeSlideObserver.observe(slide);
+      });
     });
   },
   { deep: true, immediate: true }
