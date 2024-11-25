@@ -116,6 +116,12 @@
               <ion-toggle @ionChange="settings.definitions = !settings.definitions" :checked="settings.definitions">{{ $t('definitions') }}</ion-toggle>
             </ion-item>
             <ion-item class="ion-no-padding">
+              <ion-range @ionChange="settings.definitionZoom = $event.detail.value" aria-label="Definition font size" :snaps="true" :min="100" :max="180" :step="20" :value="settings.definitionZoom" :disabled="!settings.definitions">
+                <font-awesome-icon slot="start" fixed-width :icon="['fas', 'magnifying-glass-minus']" />
+                <font-awesome-icon slot="end" fixed-width :icon="['fas', 'magnifying-glass-plus']" />
+              </ion-range>
+            </ion-item>
+            <ion-item class="ion-no-padding">
               <ion-toggle @ionChange="settings.autofit = !settings.autofit" :checked="settings.autofit">{{ $t('autofit') }}</ion-toggle>
             </ion-item>
           </ion-list>
@@ -140,6 +146,30 @@
               <ion-text slot="end">
                 <font-awesome-icon fixed-width :icon="['fas', 'download']" />
               </ion-text>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+      
+      <ion-card v-if="tab === 'settings'">
+        <ion-card-header>
+          <ion-card-title>{{ $t('keyboard') }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item class="ion-no-padding">
+              <kbd slot="start">
+                <font-awesome-icon fixed-width :icon="['fas', 'arrow-left']" />
+                <font-awesome-icon fixed-width :icon="['fas', 'arrow-right']" />
+              </kbd>
+              <ion-label>{{ $t('songs', { count: 1 }) }} {{ $t('previous') }} / {{ $t('next') }}</ion-label>
+            </ion-item>
+            <ion-item class="ion-no-padding">
+              <kbd slot="start">
+                <font-awesome-icon fixed-width :icon="['fas', 'arrow-up']" />
+                <font-awesome-icon fixed-width :icon="['fas', 'arrow-down']" />
+              </kbd>
+              <ion-label>{{ $t('scroll') }} {{ $t('up') }} / {{ $t('down') }}</ion-label>
             </ion-item>
           </ion-list>
         </ion-card-content>
@@ -176,6 +206,7 @@ import { toastController } from '@ionic/vue';
 import { Dialog } from '@capacitor/dialog';
 import * as songbook from '@/services/Songbook';
 import { useI18n } from 'vue-i18n';
+import { logoIonic } from 'ionicons/icons';
 
 // i18n
 const { t, locale, availableLocales } = useI18n();

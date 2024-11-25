@@ -55,7 +55,7 @@ export const wrap = (textarea, before, after, placeholder = '') => {
 export const defineFrets = (definition) => {
   return [...Array(6)].map((_, string) => // 6 strings
     `<div class="string" data-base="${definition.baseFret}" data-string="${string}">${
-      [...Array(5)].map((_, fret) => { // 5 frets
+      [...Array(6)].map((_, fret) => { // 5 frets
         const dataFret =
           definition.frets[string] === -1 && fret === 0
             ? '⨉'

@@ -22,7 +22,7 @@
     <ion-content :fullscreen="true">
       <div v-if="data?.songbook?.length > 0" class="slides" :id="data.book.id || 'allSongs'">
         <div v-for="(song, index) in data.songbook" :key="song.id" :id="song.id" class="slide ion-padding" @scroll="scrollProgress = $event.target.scrollTop / ($event.target.scrollHeight - $event.target.clientHeight)">
-          <div class="definitions" :style="settings.definitions ? 'display: flex' : 'display: none'"></div>
+          <div class="definitions" :style="(settings.definitions ? 'display: flex; --zoom: ' + settings.definitionZoom : 'display: none')"></div>
           <div v-if="song?.score" class="score" v-html="chordPro.toHTML(song.score)"></div>
         </div>
       </div>
@@ -112,7 +112,7 @@ const load = () => {
 
   data.songbook = data.book.id
     ? data.book.songs?.map(id => data.songs.find(song => song.id === id)) || []
-    : data.songs;
+    : data.songs.sort((a, b) => a.title.localeCompare(b.title));
 
   data.song = route.hash
     ? data.songs.find(song => song.id === route.hash.substring(1)) || router.replace('/songbook')
@@ -121,47 +121,37 @@ const load = () => {
       : data.songs.find(() => true);
 };
 
+// Key navigation
+const slide = ref();
+window.addEventListener("keydown", (event) => {
+  const actions = {
+    arrowup: () => slide.value?.scrollBy({ top: -200, behavior: 'smooth' }),
+    arrowdown: () => slide.value?.scrollBy({ top: 200, behavior: 'smooth' }),
+    arrowleft: () => slide.value.previousElementSibling?.scrollIntoView({ behavior: "instant" }),
+    arrowright: () => slide.value.nextElementSibling?.scrollIntoView({ behavior: "instant" }),
+  };
+
+  const action = actions[event.key.toLowerCase()];
+  if (action && !['TEXTAREA', 'INPUT'].includes(event.target.tagName)) {
+    event.preventDefault();
+    action();
+  }
+}, false);
+
 watch(
   () => [data.songs, data.books, settings, route.hash],
   () => {
     load();
     nextTick(() => {
-      // Change visible slide
-      document.querySelector(`#${CSS.escape(data.song.id)}`)?.scrollIntoView({ behavior: "instant"});
-
       // Observe slide resize
       const resizeSlideObserver = new ResizeObserver((entries) => {
         entries.forEach(entry => {
-          // Keyboard scroll
-          const keyActions = {
-            arrowup: (target) => target?.scrollBy({ top: -100, behavior: 'smooth' }),
-            arrowdown: (target) => target?.scrollBy({ top: 100, behavior: 'smooth' }),
-            arrowleft: (target) => target?.previousElementSibling?.scrollIntoView({ behavior: "smooth"}),
-            arrowright: (target) => target?.nextElementSibling?.scrollIntoView({ behavior: "smooth"}),
-          };
-          window.addEventListener("keydown", (event) => {
-            const action = keyActions[event.key.toLowerCase()];
-            if (action) {
-              event.preventDefault();  
-              action(entry.target);
-            }
-          });
-          
-          // Definitions
-          entry.target.parentElement.querySelectorAll('.definitions').forEach(definitions => {
-            definitions.innerHTML = [...definitions.parentElement.querySelectorAll('.score .definition')].map(definition => {
-              definition.style.display = 'flex';
-              return definition.outerHTML;
-            }).join('');
-          });
-          settings.definitions && entry.target.parentElement.querySelectorAll('.score .definition').forEach(definition => definition.style.display = 'none');
-          
           // Setup Autoscroll
           scrolling.value && togglescroll();
           autoscroll.value = new AutoScroll(entry.target, data.song?.duration);
 
           // Autofit
-          entry.target.parentElement.querySelectorAll('.score').forEach(slide => {
+          entry.target.parentElement?.querySelectorAll('.score').forEach(slide => {
             if (settings.autofit) textFit.auto(slide, entry.contentRect.width);
             else slide.style.transform = 'scale(1)';
           });
@@ -173,19 +163,31 @@ watch(
 
       // Observe slide change
       const activeSlideObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.scrollIntoView({ behavior: "smooth"})
-            //resizeSlideObserver.observe(entry.target);
-            router.replace({ hash: '#' + entry.target.id });
-          }
-        });
+        entries.forEach(entry => entry.isIntersecting && router.replace({ hash: '#' + entry.target.id }));
       }, { threshold: .9 });
+      
+      // Setup visible slide
+      slide.value = document.querySelector(`#${CSS.escape(data.song.id)}`);
+      if (slide.value) {
+        // Definitions
+        slide.value.parentElement.querySelectorAll('.definitions').forEach(definitions => {
+          definitions.innerHTML = [...definitions.parentElement.querySelectorAll('.score .definition')].map(definition => {
+            definition.style.display = 'flex';
+            return definition.outerHTML;
+          }).join('');
+        });
+        settings.definitions && slide.value.parentElement.querySelectorAll('.score .definition').forEach(definition => definition.style.display = 'none');
+          
+        // Scroll to current slide
+        slide.value.scrollIntoView({ behavior: "instant"});
 
-      document.querySelectorAll('.slide').forEach(slide => {
-        activeSlideObserver.observe(slide);
-        resizeSlideObserver.observe(slide);
-      });
+        // Set observers
+        document.querySelectorAll('.slide').forEach(slide => {
+          activeSlideObserver.observe(slide);
+          resizeSlideObserver.unobserve(slide);
+        });
+        resizeSlideObserver.observe(slide.value);
+      }
     });
   },
   { deep: true, immediate: true }

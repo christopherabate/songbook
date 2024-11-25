@@ -24,15 +24,16 @@
 }
 
 .definitions {
+	--zoom: 100;
 	position: sticky;
 	top: 0;
 	display: flex;
 	justify-content: center;
-	align-items: start;
 	flex-wrap: wrap;
 	gap: var(--padding-start);
 	z-index: 1;
 	transform: translateY(-1em);
+	font-size: calc(var(--zoom) * 1em / 100);
 }
 
 .definition {
@@ -153,10 +154,14 @@
 	padding: calc(var(--padding-start) / 4) calc(var(--padding-start) / 8) calc(var(--padding-start) / 4) calc(var(--padding-start) / 8);
 }
 
+.definition .key {
+	align-self: end;
+}
+
 .definition.keys .white-key {
 	background-color: var(--ion-text-color);
 	width: .6em;
-	height: 2.7em;
+	height: 2.5em;
 	margin-left: calc(var(--padding-start) / 8);
 	margin-right: calc(var(--padding-start) / 8);
 	border-radius: calc(var(--padding-start) / 8);
@@ -165,13 +170,11 @@
 .definition.keys .black-key {
 	background-color: var(--ion-toolbar-background);
 	width: .5em;
-	height: calc(2.7em / 1.625);
+	height: 1.5em;
 	margin-left: -.5em;
-	margin-top: calc(0px - var(--padding-start) / 16);
-	transform: translateX(50%);
+	transform: translate(50%, calc(-1em - (var(--padding-start) / 16)));
 	border: calc(var(--padding-start) / 16) solid var(--ion-toolbar-background);
 	border-radius: calc(var(--padding-start) / 16);
-	
 }
 
 .definition.keys .active {

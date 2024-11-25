@@ -5,18 +5,27 @@ export class AutoScroll {
     this.animationFrameId = null;
     this.startTime = null;
     this.scrollDistance = null;
-
-    this.bindEvents();
+    this.eventHandlers = [];
   }
 
   bindEvents() {
     const events = ['mousedown', 'wheel', 'DOMMouseScroll', 'mousewheel', 'touchmove', 'pointerdown'];
-    events.forEach(event => {
-      this.element.addEventListener(event, this.pause.bind(this, true));
+    const handler = this.pause.bind(this, true);
+    this.eventHandlers = events.map(event => ({ event, handler }));
+    this.eventHandlers.forEach(({ event, handler }) => {
+      this.element.addEventListener(event, handler);
     });
   }
 
+  unBindEvents() {
+    this.eventHandlers.forEach(({ event, handler }) => {
+      this.element.removeEventListener(event, handler);
+    });
+    this.eventHandlers = [];
+  }
+
   play(onFinishCallback) {
+    this.bindEvents();
     this.onFinishCallback = onFinishCallback;
     const scrollHeight = this.element.scrollHeight;
     const scrollDistance = scrollHeight - this.element.clientHeight;
@@ -51,6 +60,7 @@ export class AutoScroll {
     if (this.animationFrameId) {
       cancelAnimationFrame(this.animationFrameId);
       this.animationFrameId = null;
+      this.unBindEvents();
     }
     this.startTime = null;
     if (calledByUser) {
